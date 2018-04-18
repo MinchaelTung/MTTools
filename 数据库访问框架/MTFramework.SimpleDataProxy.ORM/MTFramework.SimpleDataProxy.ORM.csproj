@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C599D9BA-1218-4136-BE9F-5F0CE3994644}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MTFramework.SimpleDataProxy.ORM</RootNamespace>
+    <AssemblyName>MTFramework.SimpleDataProxy.ORM</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\Net45\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Net45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\Net45\</OutputPath>
+    <DefineConstants>TRACE;Net45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AccessType.cs" />
+    <Compile Include="Attributes\Core\AccessAttribute.cs" />
+    <Compile Include="Attributes\Core\AfterMapDataAttribute.cs" />
+    <Compile Include="Attributes\Core\CombinedTable_AfterMapDataAttribute.cs" />
+    <Compile Include="Attributes\Core\CombinedTable_ChildListAttribute.cs" />
+    <Compile Include="Attributes\Core\CombinedTable_FieldAttribute.cs" />
+    <Compile Include="Attributes\Core\CombinedTable_IDAttribute.cs" />
+    <Compile Include="Attributes\Core\CombinedTable_ParentAttribute.cs" />
+    <Compile Include="Attributes\Core\Common_ChildListAttribute.cs" />
+    <Compile Include="Attributes\Core\ExtParameterAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiFieldAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_AfterMapDataAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_ChildListAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_ClassAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_FieldAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_IDAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_ParentAttribute.cs" />
+    <Compile Include="Attributes\Core\MultiTables_PropertyDefineInClassAttribute.cs" />
+    <Compile Include="Attributes\DeleteAccessAttribute.cs" />
+    <Compile Include="Attributes\FetchAccessAttribute.cs" />
+    <Compile Include="Attributes\FieldAttribute.cs" />
+    <Compile Include="Attributes\IDAttribute.cs" />
+    <Compile Include="Attributes\InsertAccessAttribute.cs" />
+    <Compile Include="Attributes\UpdateAccessAttribute.cs" />
+    <Compile Include="ColumnType.cs" />
+    <Compile Include="CombinedTable\AfterMapDataInfo.cs" />
+    <Compile Include="CombinedTable\ChildListInfo.cs" />
+    <Compile Include="CombinedTable\ColumnInfo.cs" />
+    <Compile Include="CombinedTable\FieldInfo.cs" />
+    <Compile Include="CombinedTable\IDInfo.cs" />
+    <Compile Include="CombinedTable\LoadAttributeUtil.cs" />
+    <Compile Include="CombinedTable\ObjectInfo.cs" />
+    <Compile Include="CombinedTable\ParentInfo.cs" />
+    <Compile Include="CombinedTable\TableInfo.cs" />
+    <Compile Include="CombinedTable\TableInfoCache.cs" />
+    <Compile Include="Common\AccessInfo.cs" />
+    <Compile Include="Common\AfterMapDataInfo.cs" />
+    <Compile Include="Common\ChildListInfo.cs" />
+    <Compile Include="Common\ColumnInfo.cs" />
+    <Compile Include="Common\DeleteAccessInfo.cs" />
+    <Compile Include="Common\ExtParameterInfo.cs" />
+    <Compile Include="Common\FetchAccessInfo.cs" />
+    <Compile Include="Common\FieldInfo.cs" />
+    <Compile Include="Common\IDInfo.cs" />
+    <Compile Include="Common\InsertAccessInfo.cs" />
+    <Compile Include="Common\LoadAttributeUtil.cs" />
+    <Compile Include="Common\MultiFieldInfo.cs" />
+    <Compile Include="Common\ObjectInfo.cs" />
+    <Compile Include="Common\TableInfo.cs" />
+    <Compile Include="Common\TableInfoCache.cs" />
+    <Compile Include="Common\UpdateAccessInfo.cs" />
+    <Compile Include="FetchDataMethod.cs" />
+    <Compile Include="Info.cs" />
+    <Compile Include="MultiTablesMapper.cs" />
+    <Compile Include="MultiTables\AfterMapDataInfo.cs" />
+    <Compile Include="MultiTables\ChildListInfo.cs" />
+    <Compile Include="MultiTables\ClassInfo.cs" />
+    <Compile Include="MultiTables\FieldInfo.cs" />
+    <Compile Include="MultiTables\IDInfo.cs" />
+    <Compile Include="MultiTables\LoadAttributeUtil.cs" />
+    <Compile Include="MultiTables\MultiTablesInfo.cs" />
+    <Compile Include="MultiTables\MultiTablesInfoCache.cs" />
+    <Compile Include="MultiTables\ParentInfo.cs" />
+    <Compile Include="MultiTables\PropertyDefineInClassInfo.cs" />
+    <Compile Include="ObjectPool.cs" />
+    <Compile Include="ORMException.cs" />
+    <Compile Include="ProcedureEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleDataAccessORMUtility.cs" />
+    <Compile Include="SimpleFetchDataMethod.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MTFramework.SimpleDataProxy.Interface\MTFramework.SimpleDataProxy.Interface.csproj">
+      <Project>{57596f5c-3341-4cde-8d4d-4e77010f7149}</Project>
+      <Name>MTFramework.SimpleDataProxy.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.SimpleDataProxy\MTFramework.SimpleDataProxy.csproj">
+      <Project>{1df1b3a1-bce3-4ac1-a00e-9b9c39502b54}</Project>
+      <Name>MTFramework.SimpleDataProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils.ReflectionUtil\MTFramework.Utils.ReflectionUtil.csproj">
+      <Project>{11f4809c-ab45-4e36-9330-bbffffefd261}</Project>
+      <Name>MTFramework.Utils.ReflectionUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

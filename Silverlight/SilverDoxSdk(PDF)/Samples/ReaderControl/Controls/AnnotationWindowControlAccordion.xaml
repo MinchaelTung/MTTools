@@ -1,0 +1,84 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+	xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+	mc:Ignorable="d"
+	x:Class="PDFTron.SilverDox.Samples.AnnotationAccordionWindowControl"
+    x:Name="annotationAccordionWindowControl"
+	d:DesignWidth="210" d:DesignHeight="400" >
+    <UserControl.Resources>
+        <ResourceDictionary Source="/ReaderControl;component/Resources/ResourceDictionary.xaml"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{Binding Background, ElementName=MyAnotationWindowControl}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <layoutToolkit:Accordion SelectionMode="OneOrMore" HorizontalAlignment="Stretch">
+            <layoutToolkit:AccordionItem Header="Annotations" >
+
+                <ListBox HorizontalAlignment="Stretch" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=ToolMode, Mode=TwoWay, Converter={StaticResource ModeConverter}, ConverterParameter=annotatetool}" >
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBoxItem Tag="AnnotationCreateSticky" Content="Sticky Note" Visibility="Visible"/>
+                    <ListBoxItem Tag="AnnotationCreateTextHighlight" Content="Highlight" Visibility="Visible"/>
+                    <ListBoxItem Tag="AnnotationCreateTextUnderline" Content="Underline" Visibility="Visible"/>
+                    <ListBoxItem Tag="AnnotationCreateTextStrikeout" Content="Strikeout" Visibility="Visible"/>
+
+                    <!-- Must be here so binding doesn't screw up on selected item / tag -->
+                    <ListBoxItem Tag="PanAndAnnotationEdit" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="TextSelect" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateRectangle" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateEllipse" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateLine" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateFreeHand" Visibility="Collapsed"/>
+                </ListBox>
+
+            </layoutToolkit:AccordionItem>
+            <layoutToolkit:AccordionItem Header="Shapes">
+                <ListBox HorizontalAlignment="Stretch" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=ToolMode, Mode=TwoWay, Converter={StaticResource ModeConverter}, ConverterParameter=annotatetool}" >
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBoxItem Tag="AnnotationCreateRectangle">Rectangle</ListBoxItem>
+                    <ListBoxItem Tag="AnnotationCreateEllipse">Ellipse</ListBoxItem>
+                    <ListBoxItem Tag="AnnotationCreateLine">Line</ListBoxItem>
+                    <ListBoxItem Tag="AnnotationCreateFreeHand">Freehand</ListBoxItem>
+
+                    <!-- Must be here so binding doesn't screw up on selected item / tag -->
+                    <ListBoxItem Tag="AnnotationCreateSticky" Content="Sticky Note" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateTextHighlight" Content="Highlight" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateTextUnderline" Content="Underline" Visibility="Collapsed"/>
+                    <ListBoxItem Tag="AnnotationCreateTextStrikeout" Content="Strikeout" Visibility="Collapsed"/>
+                    <ListBoxItem Visibility="Collapsed" Tag="PanAndAnnotationEdit"/>
+                    <ListBoxItem Visibility="Collapsed" Tag="TextSelect"/>
+                </ListBox>
+                
+            </layoutToolkit:AccordionItem>
+        </layoutToolkit:Accordion>
+
+    </Grid>
+</UserControl>

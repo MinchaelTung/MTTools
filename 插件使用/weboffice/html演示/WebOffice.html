@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>WebOffice演示程序</title>
+<style type="text/css">
+<!--
+.topSide {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-top-color: #3366CC;
+	border-right-color: #3366CC;
+	border-bottom-color: #3366CC;
+	border-left-color: #3366CC;
+}
+.leftBorder {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-left-style: dashed;
+	border-left-color: #0066FF;
+}
+.downSide {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #0066FF;
+}
+.STYLE1 {color: #FF0000}
+-->
+</style>
+<!-- --------------------=== 调用Weboffice初始化方法 ===--------------------- -->
+<SCRIPT LANGUAGE=javascript FOR=WebOffice1 EVENT=NotifyCtrlReady>
+<!--
+ //WebOffice1_NotifyCtrlReady()			// 在装载完Weboffice(执行<object>...</object>)控件后执行 "WebOffice1_NotifyCtrlReady"方法
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE=javascript>
+<!--
+// ---------------------=== 控件初始化WebOffice方法 ===---------------------- //
+function WebOffice1_NotifyCtrlReady() {
+		document.all.WebOffice1.LoadOriginalFile("", "doc");
+}
+// ---------------------=== 新建文档 ===---------------------- //
+function newDoc() {
+		var doctype=document.all.doctype.value;
+		document.all.WebOffice1.LoadOriginalFile("", doctype);
+}
+// ---------------------=== 显示打印对话框 ===---------------------- //
+function showPrintDialog(){
+		document.all.WebOffice1.PrintDoc(1);
+}
+// ---------------------=== 直接打印 ===---------------------- //
+function zhiPrint(){
+		document.all.WebOffice1.PrintDoc(0);
+}
+// ---------------------== 关闭页面时调用此函数，关闭文件 ==---------------------- //
+function window_onunload() {
+	document.all.WebOffice1.Close();
+}
+ 
+// ---------------------------== 解除文档保护 ==---------------------------------- //
+function UnProtect() {
+	document.all.WebOffice1.ProtectDoc(0,1, document.all.docPwd.value);
+}
+
+// ---------------------------== 设置文档保护 ==---------------------------------- //
+function ProtectFull() {
+	document.all.WebOffice1.ProtectDoc(1,1, document.all.docPwd.value);
+}
+// ---------------------------== 禁止打印 ==---------------------------------- //
+function notPrint() {
+		document.all.WebOffice1.SetSecurity(0x01); 
+}
+// ---------------------------== 恢复允许打印 ==---------------------------------- //
+function okPrint() {
+		document.all.WebOffice1.SetSecurity(0x01 + 0x8000);
+
+}
+// ---------------------------== 禁止保存 ==---------------------------------- //
+function notSave() {
+		document.all.WebOffice1.SetSecurity(0x02); 
+
+}
+// ---------------------------== 恢复允许保存 ==---------------------------------- //
+function okSave() {
+		document.all.WebOffice1.SetSecurity(0x02 + 0x8000);
+
+}
+// ---------------------------== 禁止复制 ==---------------------------------- //
+function notCopy() {
+		document.all.WebOffice1.SetSecurity(0x04); 
+}
+// ---------------------------== 恢复允许复制 ==---------------------------------- //
+function okCopy() {
+		document.all.WebOffice1.SetSecurity(0x04 + 0x8000); 
+
+}
+// ---------------------------== 禁止拖动 ==---------------------------------- //
+function notDrag() {
+		document.all.WebOffice1.SetSecurity(0x08); 
+}
+// ---------------------------== 恢复拖动 ==---------------------------------- //
+function okDrag() {
+		document.all.WebOffice1.SetSecurity(0x08 + 0x8000); 
+
+}
+// -----------------------------== 修订文档 ==------------------------------------ //
+function ProtectRevision() {
+	document.all.WebOffice1.SetTrackRevisions(1) 
+}
+
+// -----------------------------== 隐藏修订 ==------------------------------------ //
+function UnShowRevisions() {
+	document.all.WebOffice1.ShowRevisions(0);
+}
+
+// --------------------------== 显示当前修订 ==---------------------------------- //
+function ShowRevisions() {
+	document.all.WebOffice1.ShowRevisions(1);
+
+}
+
+// -------------------------== 接受当前所有修订 ==------------------------------- //
+function AcceptAllRevisions() {
+ 	document.all.WebOffice1.SetTrackRevisions(4);
+}
+
+// ---------------------------== 设置当前操作用户 ==------------------------------- //
+function SetUserName() {
+	if(document.all.UserName.value ==""){
+		alert("用户名不可为空")
+		document.all.UserName.focus();
+		return false;
+	}
+ 	document.all.WebOffice1.SetCurrUserName(document.all.UserName.value);
+}
+// -------------------------=== 设置书签 ===------------------------------ //
+function addBookmark() {
+	document.all.WebOffice1.SetFieldValue("mark_1", "北京点聚信息技术有限公司", "::ADDMARK::");			
+}
+
+// -------------------------=== 设置书签套加红头 ===------------------------------ //
+function addRedHead() {
+	document.all.WebOffice1.SetFieldValue("mark_1", "", "::ADDMARK::");			// 添加书签
+	document.all.WebOffice1.SetFieldValue("mark_1", "E:\\产品示例\\WebOffice\\HTMLWebOffice\\image\\tem1.doc", "::FILE::");
+}
+// -------------------------=== 设置书签插入图片 ===------------------------------ //
+function addImage() {
+	document.all.WebOffice1.SetFieldValue("mark_1", "", "::ADDMARK::");			// 添加书签
+	document.all.WebOffice1.SetFieldValue("mark_1", "E:\\产品示例\\WebOffice\\HTMLWebOffice\\image\\logo.gif", "::JPG::");
+}
+
+
+// -----------------------------== 返回首页 ==------------------------------------ //
+function return_onclick() {
+	document.all.WebOffice1.Close();
+	window.location.href  = "index.jsp"
+}
+// 打开本地文件
+function docOpen() {
+	document.all.WebOffice1.LoadOriginalFile("open", "doc");
+}
+// -----------------------------== 保存文档 ==------------------------------------ //
+function newSave() {
+	document.all.WebOffice1.Save();
+}
+// -----------------------------== 另存为文档 ==------------------------------------ //
+function SaveAsTo() {
+	document.all.WebOffice1.ShowDialog(84);
+}
+// -----------------------------== 隐藏菜单 ==------------------------------------ //
+function notMenu() {
+	document.all.WebOffice1.SetToolBarButton2("Menu Bar",1,8);
+}
+// -----------------------------== 显示菜单 ==------------------------------------ //
+function okMenu() {
+	document.all.WebOffice1.SetToolBarButton2("Menu Bar",1,11);
+}
+// -----------------------------== 隐藏常用工具栏 ==------------------------------------ //
+function notOfter() {
+	document.all.WebOffice1.SetToolBarButton2("Standard",1,8);
+}
+// -----------------------------== 显示常用工具栏 ==------------------------------------ //
+function okOfter() {
+	document.all.WebOffice1.SetToolBarButton2("Standard",1,11);
+}
+// -----------------------------== 隐藏格式工具栏 ==------------------------------------ //
+function notFormat() {
+	document.all.WebOffice1.SetToolBarButton2("Formatting",1,8);
+}
+// -----------------------------== 显示格式工具栏 ==------------------------------------ //
+function okFormat() {
+	document.all.WebOffice1.SetToolBarButton2("Formatting",1,11);
+}    
+//-->
+</SCRIPT>
+</head>
+
+<body>
+<table width="1123" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td height="62" colspan="2" valign="top"><img src="image/logo.gif" alt="Dianju" width="64" height="62"    border="0" /></td>
+    <td colspan="2" valign="top">
+	  <table border=0 cellspacing=0 width="100%" cellpadding=0>
+	    <!--DWLayoutTable--> 
+          <tr valign=top> 
+            <td width="1057" height="13" valign="bottom"><div align="right"><a href="http://www.dianju.com.cn/index.htm">
+            <br />
+            点聚首页</a></div></td> 
+          </tr> 
+          <tr> 
+            <td  height="1" bgcolor="#25479D"><img height="1" src="" alt="" width="1"></td> 
+          </tr> 
+    </table></td>
+    <td width="2"></td>
+  </tr>
+  <tr>
+    <td height="15" colspan="4" valign="top" bgcolor="#e5ecf9" class="topSide"><b><strong>    WebOffice演示程序</strong></b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td width="20" height="21">&nbsp;</td>
+    <td width="44">&nbsp;</td>
+    <td width="85">&nbsp;</td>
+    <td width="972">&nbsp;</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="23" colspan="4" valign="top" class="downSide">
+	  <font size="-1" >&nbsp;&nbsp;&nbsp;文件格式: </font> 
+      <!-- ---------------=== 该处文件格式的value不可以自定义 ===------------------------- -->
+		<select name="doctype" size="1" id="doctype">
+          <option value="doc">Word</option>
+          <option value="xls">Excel</option>
+	  <option value="wps">wps</option>
+      </select>
+		<input name="CreateFile" type="button" id="CreateFile" value="新建文档" onclick="newDoc()">
+            <span class="STYLE1">|</span>
+      <input name="button" type="button" onclick="return docOpen()" value="打开本地文件" />
+    <span class="STYLE1">|  </span><font size="-1">打印:</font>
+	<input name="CreateFile" type="button" id="showPrint" value="显示对话框" onclick="showPrintDialog()">
+	<input name="CreateFile" type="button" id="zhiPrint" value="直接打印" onclick="zhiPrint()">
+	<span class="STYLE1">| </span><font size="-1" >保存:</font>
+	<input name="CreateFile2" type="button" id="CreateFile2" value="保存" onclick="newSave()" />
+	<input name="CreateFile3" type="button" id="CreateFile3" value="另存为" onclick="SaveAsTo()" />
+	<br /></td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <td height="63">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide">
+     <font size="-2" >用户名：</font>
+	  <br />
+        <input name="UserName" type="text" value="Test" style="width:74px;" maxlength="10" />
+        <br />
+        <input name="button2" type="button" class="btn"  onclick="return SetUserName()" value="设置用户" />    </td>
+  <td colspan="2" rowspan="12" valign="top" class="leftBorder">
+      <!-- -----------------------------== 装载weboffice控件 ==--------------------------------- -->
+					<script src="LoadWebOffice.js"></script>   
+    <!-- --------------------------------== 结束装载控件 ==----------------------------------- -->  </td>
+  </tr>
+  <tr>
+    <td height="69">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide">
+				<font size="-2">保护密码：</font><br>
+              <input name="docPwd" type="text" value="Password" style="width:74px;" maxlength="10">
+              <br>
+              <input type="button" class="btn" value="保护文档" onClick="return ProtectFull()">
+              <br />
+    <input name="button3" type="button" class="btn" onclick="return UnProtect()" value="解除保护" /></td>
+  </tr>
+  <tr>
+    <td height="44">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><input type="button" class="btn" value="禁用打印" onClick="return notPrint()">
+      <br />
+      <input name="button3" type="button" class="btn" onclick="return okPrint()" value="启用打印" /></td>
+  </tr>
+  <tr>
+    <td height="44">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><input name="button10" type="button" class="btn" onclick="return notSave()" value="禁止保存" />
+      <br />
+      <input name="button32" type="button" class="btn" onclick="return okSave()" value="允许保存" /></td>
+  </tr>
+  <tr>
+    <td height="44">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><input name="button11" type="button" class="btn" onclick="return notCopy()" value="禁止复制" />
+      <br />
+      <input name="button33" type="button" class="btn" onclick="return okCopy()" value="允许复制" /></td>
+  </tr>
+    <tr>
+    <td height="44">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><input name="but11" type="button" class="btn" onclick="return notDrag()" value="禁止拖动" />
+      <br />
+      <input name="but33" type="button" class="btn" onclick="return okDrag()" value="允许拖动" /></td>
+  </tr>
+  <tr>
+    <td height="86">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><input name="button4"  type="button" class="btn" onclick="return ProtectRevision()" value="修订文档" />
+      <br />
+      <input name="button5" type="button" class="btn" onclick="return ShowRevisions()" value="显示修订" />
+      <br />
+      <input name="button6" type="button" class="btn" onclick="return UnShowRevisions()" value="隐藏修订" />
+      <br />
+      <input name="button7" type="button" class="btn" onclick="return AcceptAllRevisions()" value="接受修订" /></td>
+  </tr>
+  <tr>
+    <td height="23">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><input name="button8"  type="button" class="btn" onclick="return addBookmark()" value="设置书签" /></td>
+  </tr>
+  <tr>
+    <td height="23">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><span class="downSide">
+      <input name="button9"  type="button" class="btn" onclick="return addRedHead()" value="套加红头" />
+    </span></td>
+  </tr>
+  <tr>
+    <td height="23">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide"><span class="downSide">
+      <input name="button92"  type="button" class="btn" onclick="return addImage()" value="插入图片" />
+    </span></td>
+  </tr>
+  <tr>
+    <td height="126">&nbsp;</td>
+    <td colspan="2" align="center" valign="top" class="downSide">
+      <input name="button12" type="button" class="btn" onclick="return notMenu()" value="隐藏菜单" />
+	   <input name="button12" type="button" class="btn" onclick="return okMenu()" value="显示菜单" />
+	    <input name="button12" type="button" class="btn" onclick="return notOfter()" value="隐藏常用" />
+		 <input name="button12" type="button" class="btn" onclick="return okOfter()" value="显示常用" />
+		  <input name="button12" type="button" class="btn" onclick="return notFormat()" value="隐藏格式" />
+		   <input name="button12" type="button" class="btn" onclick="return okFormat()" value="显示格式" /></td>
+  </tr>
+  <tr>
+    <td height="200">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td height="35">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

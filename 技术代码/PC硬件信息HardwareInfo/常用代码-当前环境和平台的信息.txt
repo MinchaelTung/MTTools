@@ -1,0 +1,5 @@
+Environment
+提供有关当前环境和平台的信息以及操作它们的方法。 此类不能被继承。
+相关使用文档 https://msdn.microsoft.com/zh-cn/library/system.environment.aspx
+
+

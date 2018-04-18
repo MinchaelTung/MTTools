@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E96D3CB-2340-44E5-BCFB-CA9F1EFE071E}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PDFTron.SilverDox.Samples</RootNamespace>
+    <AssemblyName>ReaderControl</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="SilverDox-SL5">
+      <HintPath>..\..\Bin\SilverDox-SL5.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Windows.Controls, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\AnnotationWindowControl.xaml.cs">
+      <DependentUpon>AnnotationWindowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AnnotationWindowControlAccordion.xaml.cs">
+      <DependentUpon>AnnotationWindowControlAccordion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomDocumentViewer.cs" />
+    <Compile Include="Controls\SideWindowControl.xaml.cs">
+      <DependentUpon>SideWindowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\AnnotationPropertiesControl.xaml.cs">
+      <DependentUpon>AnnotationPropertiesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\AnnotationsListBox.cs" />
+    <Compile Include="Controls\SubControls\AnnotationToolModePickerControl.xaml.cs">
+      <DependentUpon>AnnotationToolModePickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\LayoutControl.xaml.cs">
+      <DependentUpon>LayoutControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\OutlineTreeControl.xaml.cs">
+      <DependentUpon>OutlineTreeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\FitModeControl.xaml.cs">
+      <DependentUpon>FitModeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\OutlineToggleButtonControl.xaml.cs">
+      <DependentUpon>OutlineToggleButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\RotatePagesControl.xaml.cs">
+      <DependentUpon>RotatePagesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\SearchControl.xaml.cs">
+      <DependentUpon>SearchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\SearchPanelControl.xaml.cs">
+      <DependentUpon>SearchPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\ZoomTextBoxControl.xaml.cs">
+      <DependentUpon>ZoomTextBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\DividerControl.xaml.cs">
+      <DependentUpon>DividerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\FullScreenButtonControl.xaml.cs">
+      <DependentUpon>FullScreenButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\OpenLocalFileButtonControl.xaml.cs">
+      <DependentUpon>OpenLocalFileButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\PageNavigationControl.xaml.cs">
+      <DependentUpon>PageNavigationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\PageNumberControl.xaml.cs">
+      <DependentUpon>PageNumberControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\PrintButtonControl.xaml.cs">
+      <DependentUpon>PrintButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\ToolModeControl.xaml.cs">
+      <DependentUpon>ToolModeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubControls\ZoomSliderControl.xaml.cs">
+      <DependentUpon>ZoomSliderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReaderControl.xaml.cs">
+      <DependentUpon>ReaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\StringResource.Designer.cs" />
+    <Compile Include="Utility\Converters.cs" />
+    <Compile Include="Utility\DelegateCommand.cs" />
+    <Compile Include="Utility\FacingPanel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\RadialPanel.cs" />
+    <Compile Include="Controls\ToolbarControl.xaml.cs">
+      <DependentUpon>ToolbarControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\AnnotationWindowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AnnotationWindowControlAccordion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SideWindowControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\AnnotationPropertiesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\AnnotationToolModePickerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\LayoutControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\OutlineTreeControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\FitModeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\OutlineToggleButtonControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\RotatePagesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\SearchControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\SearchPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\ZoomTextBoxControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\DividerControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\FullScreenButtonControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\OpenLocalFileButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SubControls\PageNavigationControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\PageNumberControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\PrintButtonControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\ToolModeControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SubControls\ZoomSliderControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReaderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ResourceDictionary.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ToolbarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bullet_magnify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\printer_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\folder_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\outline.png" />
+    <Resource Include="Resources\pictures_thumbs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\section_collapsed.png" />
+    <Resource Include="Resources\section_expanded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\next_green.png" />
+    <Resource Include="Resources\play_green.png" />
+    <Resource Include="Resources\previous-green.png" />
+    <Resource Include="Resources\reverse_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\application_osx_double.png" />
+    <Resource Include="Resources\arrow_ew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow_nsew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow_rotate_anticlockwise.png" />
+    <Resource Include="Resources\arrow_rotate_clockwise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\page_cont.png" />
+    <Resource Include="Resources\page_cover_facing.png" />
+    <Resource Include="Resources\page_cover_facing_cont.png" />
+    <Resource Include="Resources\page_facing.png" />
+    <Resource Include="Resources\page_facing_cont.png" />
+    <Resource Include="Resources\page_single.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hand-16.png" />
+    <Resource Include="Resources\ibeam-16.png" />
+    <Resource Include="Resources\zoom_in.png" />
+    <Resource Include="Resources\zoom_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\StringResource.fr.resx" />
+    <EmbeddedResource Include="Resources\StringResource.resx" />
+    <EmbeddedResource Include="Resources\StringResource.zh-tw.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\SubControls\application_osx_double.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\annotation_tool_icons\annot_edit.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_ellipse.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_highlight.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_line.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_paintbrush.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_rectangle.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_sticky_note.PNG" />
+    <Resource Include="Resources\annotation_tool_icons\annot_strikethrough.png" />
+    <Resource Include="Resources\annotation_tool_icons\annot_underline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\note.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

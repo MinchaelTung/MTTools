@@ -1,0 +1,29 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mtcol="clr-namespace:MTFramework.SL.Controls"
+    xmlns:Controls="clr-namespace:MTFramework.SL.Controls;assembly=MTFramework.SL.Controls" x:Class="SLDemo.MainPage"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <Border  CornerRadius="2" BorderThickness="2" BorderBrush="#AA000000"  Background="Gray" >
+        <Grid x:Name="LayoutRoot" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="16"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#FFC8CCD1" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1" >
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"  Margin="10,0,0,0" Text="SL模仿Windows 窗体的控制按钮和右下角拉伸效果" FontSize="12" />
+                <Controls:WindowControlButtons HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Text="模仿窗体控制按钮和右下角拉伸控件" FontSize="16" />
+            </Grid>
+            <Grid Grid.Row="2" Background="#FFC8CCD1" >
+                <Controls:WindowResize HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

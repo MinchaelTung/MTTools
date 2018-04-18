@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>WebOffice接口演示说明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script LANGUAGE=javascript>
+<!--
+// 初始化控件
+function WebOffice1_NotifyCtrlReady() {
+	document.all.WebOffice1.LoadOriginalFile("", "doc");
+}
+// 执行TextArea中的代码
+function command_onclick() {
+ 	eval(document.all.commandtext.value);
+}
+// 关闭文档
+function unloadFile() {
+	document.all.WebOffice1.Close();
+}
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE=javascript FOR=WebOffice1 EVENT=NotifyCtrlReady>
+<!--
+ WebOffice1_NotifyCtrlReady()			// 在装载完Weboffice(执行<object>...</object>)控件后执行 "WebOffice1_NotifyCtrlReady"方法
+//-->
+</SCRIPT>
+
+</head>
+<body onunload="unloadFile()">
+<TABLE bgColor=#0000FF border=0 cellPadding=4 cellSpacing=1 width=98%>
+  <TR bgColor=#e5ecf9>
+    <TD align="center" bgcolor="#e5ecf9"><div align="left"><font color="#000000">WebOffice接口演示</font> </div></TD>
+  </TR>
+  <FORM action="#" method="post" name="form1" >
+  <TR bgColor=#ffffff>
+    <TD bgcolor="#ffffff"><div align="left">从接口文档复制代码到下面文本域查看演示效果： 
+          <textarea style="WIDTH: 100%; HEIGHT: 100px" name=commandtext cols=28></textarea>
+    </div></TD>
+    </TR>
+  <TR bgColor=#ffffff>
+    <TD align=center><div align="left">
+      <INPUT type=button value=执行代码 name="command" LANGUAGE=javascript onclick="return command_onclick()">
+    </div></TD>
+  </TR>
+  <TR bgColor=#ffffff >
+    <TD width="100%" height="100%" align=center >
+		<!-- 装载Weboffice控件 -->
+		<OBJECT id=WebOffice1 style="LEFT: 0px; TOP: 0px; WIDTH: 100%; HEIGHT: 500px"
+			classid="clsid:E77E049B-23FC-4DB8-B756-60529A35FAD5">
+			<PARAM NAME="_ExtentX" VALUE="6350">
+			<PARAM NAME="_ExtentY" VALUE="6350">
+			<PARAM NAME="BorderColor" VALUE="-2147483632">
+			<PARAM NAME="BackColor" VALUE="-2147483643">
+			<PARAM NAME="ForeColor" VALUE="-2147483640">
+			<PARAM NAME="TitlebarColor" VALUE="-2147483635">
+			<PARAM NAME="TitlebarTextColor" VALUE="-2147483634">
+			<PARAM NAME="BorderStyle" VALUE="1">
+			<PARAM NAME="Titlebar" VALUE="1">
+			<PARAM NAME="Toolbars" VALUE="1">
+			<PARAM NAME="Menubar" VALUE="1">
+		</OBJECT>
+		<!--   结束装载代码   -->
+</TD>
+  </TR>
+</FORM></TABLE>
+</body>
+</html>

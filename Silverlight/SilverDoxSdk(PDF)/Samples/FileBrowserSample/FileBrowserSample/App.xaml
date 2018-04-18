@@ -1,0 +1,9 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="FileBrowser.App"
+             xmlns:clr="clr-namespace:System;assembly=mscorlib" 
+             >
+    <Application.Resources>
+        <clr:String x:Key="PDFTronFileSourceString">http://www.pdftron.com/silverdox/samples/ClientBin/</clr:String>
+    </Application.Resources>
+</Application>

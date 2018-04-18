@@ -1,0 +1,22 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="PDFTron.SilverDox.Samples.SubControls.OutlineToggleButtonControl"
+	d:DesignWidth="50" d:DesignHeight="50">
+
+	<Grid x:Name="LayoutRoot">
+        <ToggleButton x:Name="OutlineNavigationButton"
+                      Checked="OutlineNavigationButton_Checked" Unchecked="OutlineNavigationButton_Unchecked"
+                      IsChecked="{Binding ShowSideWindow, Mode=TwoWay}">
+            <Image x:Name="NavigationToggleImage"  Stretch="None"/>
+            <ToolTipService.ToolTip>
+                <ToolTip Placement="Bottom">
+                    <TextBlock x:Name="ToolTipTextBlock" />
+                </ToolTip>
+            </ToolTipService.ToolTip>
+        </ToggleButton>
+	</Grid>
+</UserControl>

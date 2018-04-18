@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBHelperClass", "DBHelperClass\DBHelperClass.csproj", "{F70E45DD-0B3A-4C8F-95A7-F1A9F882BA5F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{C8D0A86F-77D7-4036-A59D-EA1B07917544}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MySql", "MySql", "{FDC3DBEE-8346-4214-A6E8-85C4823773BA}"
+	ProjectSection(SolutionItems) = preProject
+		DLL\MySql\MySql.Data.dll = DLL\MySql\MySql.Data.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F70E45DD-0B3A-4C8F-95A7-F1A9F882BA5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70E45DD-0B3A-4C8F-95A7-F1A9F882BA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70E45DD-0B3A-4C8F-95A7-F1A9F882BA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70E45DD-0B3A-4C8F-95A7-F1A9F882BA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDC3DBEE-8346-4214-A6E8-85C4823773BA} = {C8D0A86F-77D7-4036-A59D-EA1B07917544}
+	EndGlobalSection
+EndGlobal

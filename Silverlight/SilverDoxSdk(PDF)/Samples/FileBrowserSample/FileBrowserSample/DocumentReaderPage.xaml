@@ -1,0 +1,14 @@
+﻿<navigation:Page x:Class="FileBrowser.DocumentReaderPage" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:reader="clr-namespace:PDFTron.SilverDox.Samples;assembly=ReaderControl"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="File Browser Sample" NavigationCacheMode="Required">
+    <Grid x:Name="LayoutRoot">
+        <reader:ReaderControl x:Name="DocumentReader"/>
+    </Grid>
+</navigation:Page>

@@ -1,0 +1,64 @@
+.pagination {
+	padding: 2px;
+	text-align:right;
+}
+
+.pagination ul {
+	vertical-align:bottom;
+	/*Set to "right" to right align pagination interface*/
+	font-size: 12px;
+}
+
+.pagination li {
+	list-style-type: none;
+	display: inline;
+	margin-right: 5px;
+}
+
+.pagination a,.pagination a:visited {
+	padding:0px 5px;
+	border: 1px solid #9aafe5;
+	text-decoration: none;
+	color: #2e6ab1;
+}
+
+.pagination a:hover,.pagination a:active {
+	border: 1px solid #2b66a5;
+	color: #000;
+	background-color: lightyellow;
+}
+
+.pagination li.currentpage {
+	padding-right: 5px;
+	padding-left:5px;
+	font-weight: bold;
+	border: solid 1px navy;
+	background-color: #2e6ab1;
+	color: #FFF;
+}
+
+.pagination li.disablepage {
+	padding: 0 5px;
+	border: 1px solid #929292;
+	color: #929292;
+}
+
+.pagination li.nextpage {
+	font-weight: bold;
+}
+
+#paper_tran_to_number{
+		width:30px;
+		height:19px;
+		color:#2e6ab1;
+		border: solid 1px #2b66a5;
+	}
+	
+	#paper_tran_to_go{
+		width:30px;
+		height:19px;
+		color:#FFFFFF;
+		border: solid 1px #2b66a5;
+		background-color:#2e6ab1;
+		font-size:13px;
+	}

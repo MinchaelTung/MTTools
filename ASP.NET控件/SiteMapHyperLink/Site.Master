@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Eagle.Web.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title></title>
+</head>
+<body>
+	<form id="MainForm" runat="server">
+	<div id="container">
+		<div id="top">
+			<div>
+				<ul id="nav">
+					<asp:MenuHyperLink ID="Hy" CssClass="abc" runat="server" CurrentCssClass="current" NavigateUrl="~/Default.aspx?a=4">Home</asp:MenuHyperLink>
+					<asp:MenuHyperLink ID="HyCustomer" runat="server" CurrentCssClass="current" NavigateUrl="~/Customer/Member.aspx">Customer</asp:MenuHyperLink>
+					<asp:MenuHyperLink ID="HyDefault" runat="server" CurrentCssClass="current" NavigateUrl="~/Customer/Default.aspx">Default</asp:MenuHyperLink>
+				</ul>
+			</div>
+		</div>
+		<asp:ContentPlaceHolder ID="MainPlaceHolder" runat="server">
+		</asp:ContentPlaceHolder>
+	</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,154 @@
+1、时间长度的计算 TimeSpan类。
+   例如：TimeSpan span = dateTime1 - dateTime2   方便啊
+2、从类（Class)返回一个System.Type类型，用typeof关键字
+3、从一个对象实例(Object)返回一个System.Type类型，用GetType方法
+4、判断是否处于设计状态：DesignMode属性
+5、根据GUID创建对象实例
+
+System.Guid pGuid = new Guid(guid);
+System.Type ObjectCustorm = Type.GetTypeFromCLSID(pGuid);
+Object obj = Activator.CreateInstance(ObjectCustorm);
+6、GDI+不支持xor绘制模式的近似解决方法：
+ControlPaint.DrawReversibleFrame、ControlPaint.DrawReversibleLine方法
+7、获取Enum类型中的所有枚举值：
+　　Enum.GetNames方法
+　将字符串转换成枚举值
+　　Enum.Parse方法
+8、Label放在图片上时，使Label透明
+
+picLogo.Controls.Add(lblStatus);
+lblStatus.BackColor = Color.Transparent;
+9、调用帮助文件
+打开帮助文件
+System.Windows.Forms.Help.ShowHelp(this,@"c:/windows/help/mspaint.chm");
+
+打开帮助文件，并跳转到指定的主题
+System.Windows.Forms.Help.ShowHelp(this,@"c:/windows/help/mspaint.chm","paint_lines.htm");
+
+打开帮助文件，并转到“索引”选项卡
+System.Windows.Forms.Help.ShowHelpIndex(this,@"c:/windows/help/mspaint.chm","paint_lines.htm");
+
+在屏幕上显示一条浮动的帮助信息
+System.Windows.Forms.Help.ShowPopup(this,"这里是帮助信息",new Point(100,100));
+
+10、通过AppDomain在应用程序之间传递数据
+例如，两个系统可能会共用登录信息，登录一个系统后，再启动另一个系统时，不需要重新登录。
+先定义一个在应用程序之间传递的数据的类，该类必须从MarshalByRefObject继承:
+
+/// <summary>
+/// 用于在不同的appdomain之间传递参数
+/// </summary>
+public class AppDomainInfo:MarshalByRefObject
+{
+    public int UserID;
+}
+然后可以这样打开新的应用程序
+
+        AppDomainSetup setup = new AppDomainSetup();
+                    setup.ApplicationName = "测试程序";                    
+                    AppDomain appDomain = AppDomain.CreateDomain("TestDomain", null, setup);
+
+                    AppDomainInfo domainInfo = new  AppDomainInfo();
+                    domainInfo.UserID = Winsharp.BaseClass.AppConfigInfo.UserID;
+                    appDomain.SetData("domainInfo",domainInfo);
+
+                    object obj = appDomain.CreateInstanceFromAndUnwrap(str,"TestDomain.Test");
+                    (obj as Form).Show();
+11、换行字符串，相当于"\r\n"，Environment.NewLine
+       API中有GetTickCount函数，C#中为Environment.TickCount
+12、取得安装操作系统输入的用户姓名和公司名称：
+
+               Microsoft.Win32.RegistryKey   cmicRegKey=Microsoft.Win32.Registry.CurrentUser.OpenSubKey("Software");   
+                   cmicRegKey=cmicRegKey.OpenSubKey("Microsoft");   
+                cmicRegKey=cmicRegKey.OpenSubKey("MS Setup (ACME)");   
+                cmicRegKey=cmicRegKey.OpenSubKey("User Info");   
+                object cmicCompany = cmicRegKey.GetValue("DefCompany");     
+                object cmicUser = cmicRegKey.GetValue("DefName");   
+13、C# WinForm 捕获最小化事件（来自Limon Tea的随笔http://limon7.cnblogs.com/archive/2006/07/23/457865.html）
+ 虽然Form类没有提供Minimize的事件，但还是可以通过重载Deactive来实现
+当Form失去焦点后，测试WindowState取得Form状态，若为Minimized既是最小化事件。
+本例为最小化后隐藏窗口：
+
+ private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+                this.Visible = false;
+        }
+
+还有种方法更加直接，重载WndProc：
+
+ const int WM_SYSCOMMAND = 0x112;
+const int SC_CLOSE = 0xF060;
+const int SC_MINIMIZE = 0xF020;
+const int SC_MAXIMIZE = 0xF030;
+protected override void WndProc(ref Message m)
+{
+    if (m.Msg == WM_SYSCOMMAND)
+    {
+        if (m.WParam.ToInt32() == SC_MINIMIZE)
+        {
+            this.Visible = false;
+            return;
+        }
+    }
+    base.WndProc(ref m);
+}
+14、FromBase64String的问题
+   在使用Convert.ToBase64String()对字符串进行Base64编码时，注意的几点：
+     例：string s = "Hello";
+         byte[] bytes = Convert.FromBase64String(s);
+  以上代码在运行时会抛出FormatException异常.提示为：Base-64字符数组的无效长度
+
+原因：当Convert.FromBase64String方法的参数s的长度小于 4 或不是 4 的偶数倍时，将会抛出FormatException。
+   
+     例: 
+         Convert.FromBase64String("Hell");      // Normal.
+         Convert.FromBase64String("Hell ");     // Normal.（忽略空格）
+         Convert.FromBase64String("Hello!");    // throw FormatException.
+         Convert.FromBase64String("Hello Net"); // Normal.（忽略空格）
+
+15、避免程序重复运行。（即只允许运行一个实例）
+
+System.Threading.Mutex appSingleton = new System.Threading.Mutex(false, "MyProgInstance_PPP"); 
+    if(appSingleton.WaitOne(0, false)) 
+    {
+      Application.Run(new FormMain(););
+    }
+   else
+   {
+      MessageBox.Show("程序已经运行");
+   }
+16、VB中的chr和asc函数在C#中没有，C#中只要用Convert类中的函数进行转换就可以了，如：
+     int n = Convert.ToInt32('a');
+     char c = Convert.ToChar(99);
+     另外，空的char值的获得：Convert.ToChar(0) 例如，在设置了一个textBox的PasswordChar属性后，要清除它，就只能这样了：textBox1.PasswordChar = Convert.ToChar(0) ;
+
+17、C#的String.Format举例（http://blog.sina.com.cn/u/4a99b1ba010005ax）
+
+ string str1 = String.Format("{0:N1}",56789);               //result: 56,789.0
+ string str2 = String.Format("{0:N2}",56789);               //result: 56,789.00
+ string str3 = String.Format("{0:N3}",56789);               //result: 56,789.000
+ string str8 = String.Format("{0:F1}",56789);               //result: 56789.0
+ string str9 = String.Format("{0:F2}",56789);               //result: 56789.00
+ string str11 =(56789 / 100.0).ToString("#.##");            //result: 567.89
+ string str12 =(56789 / 100).ToString("#.##");              //result: 567
+
+字符		说明				示例					输出
+C 或 c		货币		Console.Write("{0:C}", 2.5);	$2.50
+						Console.Write("{0:C}", -2.5);	($2.50)
+
+D 或 d		十进制数	Console.Write("{0:D5}", 25);	00025
+
+E 或 e		科学型		Console.Write("{0:E}", 250000);	2.500000E+005
+
+F 或 f		固定点		Console.Write("{0:F2}", 25);	25.00
+						Console.Write("{0:F0}", 25);	25
+
+G 或 g		常规		Console.Write("{0:G}", 2.5);	2.5
+
+N 或 n		数字		Console.Write("{0:N}", 2500000);2,500,000.00
+
+X 或 x		十六进制	Console.Write("{0:X}", 250);	FA
+						Console.Write("{0:X}", 0xffff);	FFFF
+
+

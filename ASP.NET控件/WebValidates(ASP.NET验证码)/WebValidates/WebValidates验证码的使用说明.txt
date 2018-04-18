@@ -1,0 +1,76 @@
+一、WebValidates验证码控件的添加至VS步骤如下：
+
+1.将WebValidates.dll拷贝至站点内的Bin文件夹
+
+2.在VS工具箱中“常规”--右键--“选择项…”，在“.net framework组件”选项卡点击“浏览”，找到站点中的Bin文件夹下的WebValidates.dll文件。
+
+3.在VS工具箱中“常规”中出现了验证码控件。
+
+
+二、WebValidates验证码控件使用：
+
+1.将验证码控件放入工具箱后。
+2.拖放控件到页面相应位置。
+3.页面初始化时，编程生成验证码（假设验证码控件ID为txtcode）.
+      protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            txtcode.Create();//首次加载生成新验证码
+        }
+    }
+4.编写代码码对比用户的输入（假设用户输入验证码的文本框ID是inputcode）,并做相应的处理。
+   txtcode.CheckSN(inputcode.Text.Trim());//返回bool型的值.
+ 
+三、WebValidates使用示例：
+登录页面内容(login.aspx)：
+注册页面上增加的内容：
+<%@ Register Assembly="WebValidates" Namespace="WebValidates" TagPrefix="cc1" %>
+......
+<form id="form1" runat="server">
+    <div>
+        用户名:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+        密&nbsp; 码 :
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <br />
+        验证码:<asp:TextBox ID="inputcode" runat="server" Width="38px"></asp:TextBox>
+        <cc1:SerialNumber ID="txtcode" runat="server">
+        </cc1:SerialNumber>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="登录" />
+        <asp:Label ID="lblmessage" runat="server" Text="Label"></asp:Label></div>
+    </form>
+后台代码(login.aspx)：
+using System;
+......
+protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            txtcode.Create();//首次加载生成新验证码
+        }
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        if (!CheckCode())
+        {
+            lblmessage.Text = "验证码错误！";
+        }
+        else
+        {
+            lblmessage.Text = "验证码正确！";
+        }
+    }
+    protected bool CheckCode()//验证方法
+    {
+        if (txtcode.CheckSN(inputcode.Text.Trim()))//判断验证码是否输入正确
+        {
+            return true;
+        }
+        else
+        {
+            //
+            txtcode.Create();//如果验证码输入不正确，则生成新的验证码
+            return false;
+        }
+    }

@@ -1,0 +1,100 @@
+﻿<!-- BareBonesCalendarItem.MainWindow by Charles Petzold, March 2009 -->
+<Window x:Class="BareBonesCalendarItem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkit="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+        xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives;assembly=WPFToolkit"
+        Title="Bare-Bones CalendarItem">
+    <Window.Resources>
+        <Style x:Key="calItemStyle"
+               TargetType="primitives:CalendarItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="primitives:CalendarItem">
+                        <ControlTemplate.Resources>
+                            <DataTemplate x:Key="DayTitleTemplate">
+                                <TextBlock Text="{Binding}"
+                                           HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </ControlTemplate.Resources>
+
+                        <DockPanel Name="PART_Root" 
+                                   LastChildFill="True">
+                            <Button x:Name="PART_PreviousButton" 
+                                    DockPanel.Dock="Left"
+                                    Content="&lt;"
+                                    Focusable="False" />
+
+                            <Button x:Name="PART_NextButton" 
+                                    DockPanel.Dock="Right"
+                                    Content="&gt;" 
+                                    Focusable="False" />
+
+                            <Button x:Name="PART_HeaderButton"                                             
+                                    DockPanel.Dock="Top"
+                                    FontWeight="Bold"
+                                    Focusable="False" />
+
+                            <Grid>
+                                <Grid x:Name="PART_MonthView" 
+                                      Visibility="Visible">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+
+                                <Grid x:Name="PART_YearView" 
+                                      Visibility="Hidden">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </Grid>
+                            <Rectangle x:Name="PART_DisabledVisual" Opacity="0" Visibility="Collapsed" Fill="#A5FFFFFF"/>
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="PART_DisabledVisual" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type toolkit:Calendar}}, Path=DisplayMode}" Value="Year">
+                                <Setter TargetName="PART_MonthView" Property="Visibility" Value="Hidden" />
+                                <Setter TargetName="PART_YearView" Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type toolkit:Calendar}}, Path=DisplayMode}" Value="Decade">
+                                <Setter TargetName="PART_MonthView" Property="Visibility" Value="Hidden" />
+                                <Setter TargetName="PART_YearView" Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <toolkit:Calendar CalendarItemStyle="{StaticResource calItemStyle}"
+                      VerticalAlignment="Center" />
+    
+</Window>

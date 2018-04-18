@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>SampleApp</title>
+    <style type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+	    text-align:center;
+    }
+    </style>
+    <script type="text/javascript" src="ReaderControl.js"></script>
+    <script type="text/javascript">
+        function onSilverlightError(sender, args)
+        {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+                appSource = sender.getHost().Source;
+            }
+
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+                return;
+            }
+
+            var errMsg = "Unhandled Error in Silverlight Application " + appSource + "\n";
+
+            errMsg += "Code: " + iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {
+                if (args.lineNumber != 0) {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " + args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+
+        /**
+         * The ReaderControl instance to use on this page.
+         */
+        var readerCtrl = null;
+
+        /**
+         * Callback invoked after the document is loaded.
+         */
+        function documentLoaded()
+        {
+            // register UI update callbacks
+            readerCtrl.setOnPageChangeCallback("setCurrentPageTextBox");
+            readerCtrl.setOnPageZoomCallback("setPageZoomTextBox");
+
+            // set the initial values
+            setPageZoomTextBox();
+            setCurrentPageTextBox();
+
+            var totalPages = readerCtrl.getPageCount();
+            document.getElementById("totalPages").innerHTML = totalPages;
+        }
+
+        /**
+         * Function to check whether the Enter key is pressed.
+         */
+        function testEnterKey(e)
+        {
+            if (e.keyCode == 13)
+                return (true);
+            return (false);
+        }
+
+        /**
+         * Toggles the side window panel of the SilverDox ReaderControl.
+         */
+        function toggleSideWindow()
+        {
+            var imgButton = document.getElementById("sideWindowButton");
+
+            if (readerCtrl.getShowSideWindow()) {
+                readerCtrl.setShowSideWindow(false);
+                imgButton.value = ">>";
+            }
+            else {
+                readerCtrl.setShowSideWindow(true);
+                imgButton.value = "<<";
+            }
+        }
+
+        function changePresentationMode()
+        {
+            var layout = document.getElementById("pagePresentation").value;
+            readerCtrl.setLayoutMode(layout);
+        }
+
+        /**
+         * Callback function when the document's page number has changed.
+         */
+        function setCurrentPageTextBox()
+        {
+            var currentPage = readerCtrl.getCurrentPageNumber();
+            document.getElementById("currentPageNumber").value = currentPage;
+        }
+
+        /**
+         * Callback function when the document's zoom level has changed.
+         */
+        function setPageZoomTextBox()
+        {
+            var zoomLevel = parseInt(readerCtrl.getZoomLevel() * 100);
+            document.getElementById("zoomLevel").value = zoomLevel;
+        }
+
+        /**
+         * Gets the page number from an input textbox, then sets it as the ReaderControl's new page number.
+         */
+        function setCurrentPageFromTextBox()
+        {
+            var newPage = document.getElementById("currentPageNumber").value;
+            readerCtrl.setCurrentPageNumber(newPage);
+        }
+
+        /**
+         * Gets the zoom value from an input textbox, then sets it as the ReaderControl's new zoom level.
+         */
+        function setPageZoomFromTextBox()
+        {
+            var newZoom = document.getElementById("zoomLevel").value;
+            var zoom = parseFloat(newZoom);
+            zoom = zoom / 100;
+            readerCtrl.setZoomLevel(zoom);
+        }
+
+        function silverlightLoaded()
+        {
+            readerCtrl.loadDocument("http://www.pdftron.com/silverdox/samples/ClientBin/A%20Field%20Guide%20to%20Genetic%20Programming.xod", "documentLoaded");
+        }
+    </script>
+</head>
+<body>
+    <form id="mainForm" runat="server" style="height:100%">
+        <table width="100%">
+            <tr>
+            <td style="width:20%;text-align:left;">
+            <input id="sideWindowButton" type="button" value=">>" title="Toggle side window" onclick="toggleSideWindow();" style="margin-left:20px;" />
+            </td>
+            <td style="width:80%;text-align:right;">
+            <select id="pagePresentation" title="Select page presentation mode" onchange="changePresentationMode();">
+                <option value="Continuous">Continuous</option>
+                <option value="FacingContinuous">Facing Continuous</option>
+                <option value="FacingCoverContinuous">Cover Facing Continuous</option>
+                <option value="SinglePage">Single Page</option>
+                <option value="Facing">Facing</option>
+                <option value="FacingCover">Cover Facing</option>
+            </select>
+            <input id="rotateButton" type="button" value="Rotate" title="Rotate the document" onclick="readerCtrl.rotateClockwise();" />
+            <input id="firstPageButton" type="button" value="|<" title="Go to first page" onclick="readerCtrl.goToFirstPage();" />
+            <input id="prevPageButton" type="button" value="<" title="Go to previous page" onclick="readerCtrl.goToPrevPage();" />
+            <input id="currentPageNumber" type="text" value="-" title="The current page number" onkeypress="{ if(testEnterKey(event)) setCurrentPageFromTextBox(); }" style="width:30px;text-align:right" />
+            /<span id="totalPages" title="Total number of pages">-</span>
+            <input id="nextPageButton" type="button" value=">" title="Go to next page" onclick="readerCtrl.goToNextPage();" />
+            <input id="lastPageButton" type="button" value=">|" title="Go to last page" onclick="readerCtrl.goToLastPage();" />
+            <input id="zoomLevel" type="text" value="100" title="Zoom level" onkeypress="{ if(testEnterKey(event)) setPageZoomFromTextBox(); }" style="width:30px;text-align:right" />
+            <label style="margin-right:20px;">%</label>
+            </td>
+            </tr>
+        </table>
+        <div id="silverlightControlHost" style="height:95%">
+            <script type="text/javascript">
+                readerCtrl = new ReaderControl("rc1", "silverlight", { silverlight: "ClientBin/ReaderControlSample.xap", html5: "html5/ReaderControl.html", showSilverlightControls: true }, "silverlightLoaded");
+            </script>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!-- SelectedDateList.MainWindow.xaml by Charles Petzold, March 2009 -->
+<Window x:Class="SelectedDateLister.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkit="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+        xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives;assembly=WPFToolkit"
+        SizeToContent="WidthAndHeight"
+        Title="Selected Date Lister">
+    <Window.Resources>
+        <Style TargetType="toolkit:Calendar">
+            <Setter Property="SelectionMode" Value="MultipleRange" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="toolkit:Calendar">
+                        <StackPanel Name="PART_Root" 
+                                    Orientation="Horizontal">
+                            <primitives:CalendarItem 
+                                Name="PART_CalendarItem" 
+                                Style="{TemplateBinding CalendarItemStyle}"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                VerticalAlignment="Center" />
+                            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Margin="4 4 0 4">
+                                <ScrollViewer 
+                                        VerticalScrollBarVisibility="Auto"
+                                        Height="{Binding ElementName=PART_CalendarItem,
+                                                         Path=ActualHeight}"
+                                        Width="100">
+                                    <ItemsControl 
+                                        ItemsSource=
+                                            "{Binding RelativeSource={RelativeSource 
+                                                          AncestorType=toolkit:Calendar}, 
+                                                      Path=SelectedDates}" />
+                                </ScrollViewer>
+                            </Border>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <toolkit:Calendar />
+    
+</Window>

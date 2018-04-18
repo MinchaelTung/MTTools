@@ -1,0 +1,63 @@
+.pager{
+	padding: 2px;
+	text-align:center;
+}
+.pager ul{
+	vertical-align:bottom;
+	font-size: 12px;
+}
+.pager li{
+	list-style-type:none;	
+	display: inline;
+	margin-right: 5px;
+}
+.pager li.disable{
+	border: 1px solid #CCCCCC;
+	color: #999999;
+	padding:0px 5px;
+}
+.pager li.current{
+	color: #FFFFCC;
+	border: 1px solid #6666FF;
+	padding:0px 5px;
+	background-color: #6666FF;
+}
+.pager a,.pager a:visited{
+	padding:0px 5px;
+	border: 1px solid #CCCCCC;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	color: #0000FF;
+}
+.pager a:hover,.pager a:active{
+	padding:0px 5px;
+	border: 1px solid #CCCCCC;
+	color: #0000FF;
+	text-decoration: none;
+	background-color: #FFFFCC;
+}
+#paper_tran_to_number{
+	font-size: 12px;
+	color: #0000FF;
+	width: 20px;
+	height: 12px;
+	border: 1px solid #CCCCCC;
+	text-align: center;
+	padding-right: 5px;
+	padding-left: 5px;
+	margin-right: 5px;
+	}
+	
+	#paper_tran_to_go{
+	color:#FFFFFF;
+	background-color:#6666FF;
+	font-size:12px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	height: 16px;
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: center;
+	}

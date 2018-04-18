@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IUploadFileService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="../WcfService/UploadFileService.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IUploadFileService"
+                contract="WcfService.IUploadFileService" name="BasicHttpBinding_IUploadFileService" />
+        </client>
+    </system.serviceModel>
+</configuration>

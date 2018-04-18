@@ -1,0 +1,31 @@
+﻿body {
+	margin: 0px;
+	font-size: 14px;
+}
+
+A{
+	text-decoration:none;
+}
+
+#nav{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	line-height:20px;
+}
+#nav li{
+	width:100px;
+	border:Solid 1px #000000;
+	background-color:#9AD9F8;
+	text-align:center;
+	float:left;
+	margin-right:10px;
+}
+#nav li a{
+	display:block;
+}
+
+#nav .current{
+	border:Solid 1px #DE710C;
+	background-color:#FBD8A5;
+}

@@ -1,0 +1,29 @@
+﻿<Window x:Class="MTFramework.WPFControl.GlobalExceptionWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="错误提示" Height="380" Width="635" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Label x:Name="lb_Info" Content="APPNAME 遇到问题需要关闭。我们对此引起的不便表示抱歉。请将此问题报告给 DEVNNAME。" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="609" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Image HorizontalAlignment="Left" Height="60" Margin="10,40,0,0" VerticalAlignment="Top" Width="60" Source="pack://siteoforigin:,,,/Resources/Info_Box_Blue.png" Stretch="Fill"/>
+        <Label Content="信息:" HorizontalAlignment="Right" Margin="0,40,492,0" VerticalAlignment="Top" />
+        <Label Content="对象:" HorizontalAlignment="Right" Margin="0,65,492,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_Info" HorizontalAlignment="Right" Height="21" Margin="0,42,10,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="477" IsReadOnly="True"/>
+        <TextBox x:Name="txt_Source" HorizontalAlignment="Right" Height="21" Margin="0,67,10,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="477" IsReadOnly="True"/>
+        <Label Content="堆栈:" HorizontalAlignment="Right" Margin="0,90,492,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_StackTrace" HorizontalAlignment="Right" Height="85" Margin="0,92,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="477" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" />
+        <Label Content="方法:" HorizontalAlignment="Right" Margin="0,180,492,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_TargeSite" HorizontalAlignment="Right" Height="21" Margin="0,182,10,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="477" IsReadOnly="True"/>
+        <Image HorizontalAlignment="Left" Height="60" Margin="10,205,0,0" VerticalAlignment="Top" Width="60" Source="pack://siteoforigin:,,,/Resources/Computer.png" Stretch="Fill"/>
+        <Label Content="当前路径:" HorizontalAlignment="Right" Margin="0,205,492,0" VerticalAlignment="Top"/>
+        <Label Content="机器名:" HorizontalAlignment="Right" Margin="0,230,492,0" VerticalAlignment="Top"/>
+        <Label Content="操作系统:" HorizontalAlignment="Right" Margin="0,255,492,0" VerticalAlignment="Top"/>
+        <Label Content="用户名:" HorizontalAlignment="Right" Margin="0,280,492,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txb_CurrentDirectory" HorizontalAlignment="Left" Margin="142,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txb_MachineName" HorizontalAlignment="Left" Margin="142,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txb_OSVersion" HorizontalAlignment="Left" Margin="142,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txb_UserName" HorizontalAlignment="Left" Margin="142,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Button x:Name="btn_Feedback" Content="发送反馈信息" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" Width="120" Click="btn_Feedback_Click"/>
+        <Button x:Name="btn_Abort" Content="中止程序运行" HorizontalAlignment="Right" Margin="0,315,140,0" VerticalAlignment="Top" Width="120" Click="btn_Abort_Click"/>
+        <Button x:Name="btn_Ignore" Content="忽略当前错误" HorizontalAlignment="Right" Margin="0,315,10,0" VerticalAlignment="Top" Width="120" Click="btn_Ignore_Click"/>
+    </Grid>
+</Window>

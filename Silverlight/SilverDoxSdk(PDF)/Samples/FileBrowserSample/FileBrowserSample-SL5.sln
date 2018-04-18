@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBrowserSample.Web", "FileBrowserSample.Web\FileBrowserSample.Web.csproj", "{F41745A4-E734-46FF-B4B9-CF515691EF94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBrowserSample-SL5", "FileBrowserSample\FileBrowserSample-SL5.csproj", "{7AD941D3-85DD-4349-A949-7ED9B7C25F63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderControl-SL5", "..\ReaderControl\ReaderControl-SL5.csproj", "{9E96D3CB-2340-44E5-BCFB-CA9F1EFE071E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F41745A4-E734-46FF-B4B9-CF515691EF94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41745A4-E734-46FF-B4B9-CF515691EF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41745A4-E734-46FF-B4B9-CF515691EF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41745A4-E734-46FF-B4B9-CF515691EF94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD941D3-85DD-4349-A949-7ED9B7C25F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD941D3-85DD-4349-A949-7ED9B7C25F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD941D3-85DD-4349-A949-7ED9B7C25F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD941D3-85DD-4349-A949-7ED9B7C25F63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E96D3CB-2340-44E5-BCFB-CA9F1EFE071E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E96D3CB-2340-44E5-BCFB-CA9F1EFE071E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E96D3CB-2340-44E5-BCFB-CA9F1EFE071E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E96D3CB-2340-44E5-BCFB-CA9F1EFE071E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CaseSensitive" xml:space="preserve">
+    <value>Sensible à la casse</value>
+  </data>
+  <data name="Continuous" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="CoverFacing" xml:space="preserve">
+    <value>Couverture Face</value>
+  </data>
+  <data name="CoverFacingContinuous" xml:space="preserve">
+    <value>Couverture Face continu</value>
+  </data>
+  <data name="CurrentPageToolTip" xml:space="preserve">
+    <value>Numéro de page actuelle</value>
+  </data>
+  <data name="DocumentSearchedCaption" xml:space="preserve">
+    <value>Document entier cherché</value>
+  </data>
+  <data name="DocumentSearchedMessage" xml:space="preserve">
+    <value>Document entier cherché. Pas plus de matches ont été trouvés.</value>
+  </data>
+  <data name="DocumentSearchToolTip" xml:space="preserve">
+    <value>Recherche document entier</value>
+  </data>
+  <data name="ErrorLoadingDocument" xml:space="preserve">
+    <value>Erreur de chargement de documents</value>
+  </data>
+  <data name="Facing" xml:space="preserve">
+    <value>Face</value>
+  </data>
+  <data name="FacingContinuous" xml:space="preserve">
+    <value>Face continu</value>
+  </data>
+  <data name="FirstPageToolTip" xml:space="preserve">
+    <value>Aller à la première page</value>
+  </data>
+  <data name="FitPageToolTip" xml:space="preserve">
+    <value>Ajuster à la page</value>
+  </data>
+  <data name="FitWidthToolTip" xml:space="preserve">
+    <value>Ajuster à la largeur</value>
+  </data>
+  <data name="FullScreenToolTip" xml:space="preserve">
+    <value>Le mode plein écran</value>
+  </data>
+  <data name="HideOutlineToolTip" xml:space="preserve">
+    <value>Masquer les grandes lignes de navigation</value>
+  </data>
+  <data name="LastPageToolTip" xml:space="preserve">
+    <value>Aller à la dernière page</value>
+  </data>
+  <data name="LayoutButtonToolTip" xml:space="preserve">
+    <value>Utilisez le menu déroulant pour sélectionner un mode de présentation des pages</value>
+  </data>
+  <data name="NextPageToolTip" xml:space="preserve">
+    <value>Aller à la page suivante</value>
+  </data>
+  <data name="NumberOfPagesToolTip" xml:space="preserve">
+    <value>Nombre de pages</value>
+  </data>
+  <data name="OpenFileToolTip" xml:space="preserve">
+    <value>Ouvrez le fichier locale</value>
+  </data>
+  <data name="OutlinesToolTip" xml:space="preserve">
+    <value>Contours</value>
+  </data>
+  <data name="PageStringFormat" xml:space="preserve">
+    <value>Page {0}</value>
+  </data>
+  <data name="PanToolTip" xml:space="preserve">
+    <value>Outil Panoramique</value>
+  </data>
+  <data name="PinToolbarToolTip" xml:space="preserve">
+    <value>Barre d'outils Pin</value>
+  </data>
+  <data name="PreviousPageToolTip" xml:space="preserve">
+    <value>Aller à la page précédente</value>
+  </data>
+  <data name="PrintToolTip" xml:space="preserve">
+    <value>Imprimer le document</value>
+  </data>
+  <data name="RotateCCWToolTip" xml:space="preserve">
+    <value>Rotation antihoraire Pages</value>
+  </data>
+  <data name="RotateCWToolTip" xml:space="preserve">
+    <value>Tournez dans le sens horaire Pages</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="SearchTextToolTip" xml:space="preserve">
+    <value>Recherche de texte</value>
+  </data>
+  <data name="ShowOutlineToolTip" xml:space="preserve">
+    <value>Afficher la navigation aperçu</value>
+  </data>
+  <data name="SilverlightKeyboardRestriction" xml:space="preserve">
+    <value>Pour des raisons de sécurité, Silverlight restreint l'accès du clavier pendant le mode plein écran.</value>
+  </data>
+  <data name="SinglePage" xml:space="preserve">
+    <value>Une seule page</value>
+  </data>
+  <data name="TextNotFoundCaption" xml:space="preserve">
+    <value>Texte introuvable</value>
+  </data>
+  <data name="TextNotFoundMessage" xml:space="preserve">
+    <value>Le texte spécifié est introuvable.</value>
+  </data>
+  <data name="TextSelectToolTip" xml:space="preserve">
+    <value>Outil de sélection de texte</value>
+  </data>
+  <data name="ThumbnailsToolTip" xml:space="preserve">
+    <value>Miniatures</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Une erreur inconnue s'est produite.</value>
+  </data>
+  <data name="UnpinToolbarToolTip" xml:space="preserve">
+    <value>Barre d'outils Unpin</value>
+  </data>
+  <data name="WholeWord" xml:space="preserve">
+    <value>Mot entier seulement</value>
+  </data>
+  <data name="ZoomToolTip" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="CopyCommand" xml:space="preserve">
+    <value>Copie</value>
+  </data>
+  <data name="FitPageCommand" xml:space="preserve">
+    <value>Adapter la page</value>
+  </data>
+  <data name="FitWidthCommand" xml:space="preserve">
+    <value>Pleine largeur</value>
+  </data>
+  <data name="PanToolCommand" xml:space="preserve">
+    <value>Outil Panoramique</value>
+  </data>
+  <data name="SelectToolCommand" xml:space="preserve">
+    <value>Sélectionnez l'outil</value>
+  </data>
+  <data name="ZoomInCommand" xml:space="preserve">
+    <value>Zoom avant</value>
+  </data>
+  <data name="ZoomOutCommand" xml:space="preserve">
+    <value>Zoom arrière</value>
+  </data>
+</root>

@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:res="clr-namespace:PDFTron.SilverDox.Samples.Resources"
+		xmlns:util="clr-namespace:PDFTron.SilverDox.Samples.Utility" mc:Ignorable="d"
+		x:Class="PDFTron.SilverDox.Samples.SubControls.PageNumberControl" d:DesignWidth="150" d:DesignHeight="50">
+	<UserControl.Resources>
+		<ResourceDictionary Source="/ReaderControl;component/Resources/ResourceDictionary.xaml" />
+	</UserControl.Resources>
+	<Grid x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<TextBox x:Name="CurrentPageNumberTextBlock"
+				Text="{Binding CurrentPageNumber, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+				KeyDown="CurrentPageNumberTextBlock_KeyDown" MouseEnter="CurrentPageNumberTextBlock_MouseEnter"
+				LostFocus="CurrentPageNumberTextBlock_LostFocus" VerticalAlignment="Center" TextAlignment="Right"
+				Width="42" Padding="0">
+			<ToolTipService.ToolTip>
+				<ToolTip Placement="Bottom">
+					<TextBlock x:Name="PageNumToolTextBlock"
+							Text="{Binding Source={StaticResource StringResource}, Path=CurrentPageToolTip}" />
+				</ToolTip>
+			</ToolTipService.ToolTip>
+		</TextBox>
+		<TextBlock Grid.Column="1" x:Name="Divider" Text="/" Style="{StaticResource ToolbarTextBlock}" Margin="2,0,2,0" />
+		<TextBlock Grid.Column="2" x:Name="PageCountTextBlock" Text="{Binding PageCount}" VerticalAlignment="Center"
+				Style="{StaticResource ToolbarTextBlock}">
+ <ToolTipService.ToolTip>
+				<ToolTip Placement="Bottom">
+					
+<TextBlock Text="{Binding Source={StaticResource StringResource}, Path=NumberOfPagesToolTip}" />
+					
+				</ToolTip>
+			</ToolTipService.ToolTip>
+			</TextBlock>
+	</Grid>
+</UserControl>

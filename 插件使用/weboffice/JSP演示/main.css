@@ -1,0 +1,33 @@
+a:link {
+	text-decoration: none;
+	color: #000000;
+}
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	color: #FF0000;
+	text-decoration: underline;
+}
+#alert_table .data_row TD {
+	BORDER-TOP: #c0c5df 1px solid
+}
+#alert_table .create_row TD {
+	BORDER-BOTTOM: #3366cc 1px solid; BACKGROUND-COLOR: #e5ecf9
+}
+.link_off {
+	COLOR: #999999
+}.mainTxt {
+	font-size: 14px;
+}
+.INPUT
+{
+    FONT-SIZE: 6pt;
+    COLOR: #000000;
+    FONT-FAMILY: "x-small Tahoma", "Verdana", "Arial", "ËÎÌו"
+}

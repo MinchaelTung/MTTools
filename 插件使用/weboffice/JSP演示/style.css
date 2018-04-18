@@ -1,0 +1,56 @@
+.maintitle
+{
+	 FONT-SIZE: 13px;
+	 COLOR: #000000; 
+}
+
+.maintxt
+{
+	 FONT-SIZE: 12px;
+}
+.maintxt A:visited
+{
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+	text-decoration: none;
+}
+.maintxt A:hover
+{
+   FONT-SIZE: 12px;
+    COLOR: #ff0000;
+	text-decoration: none;
+}
+.maintxt A:link
+{
+    COLOR: #000000;
+	text-decoration: none;
+}
+.maintxt A:active
+{
+    COLOR: #000000;
+	text-decoration: none;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+.btn {
+	BACKGROUND-COLOR: #ccccff; 
+	BORDER-BOTTOM: #000000 1px solid; 
+	BORDER-LEFT: #000000 1px solid; 
+	BORDER-RIGHT: #000000 1px solid; 
+	BORDER-TOP: #000000 1px solid; 
+	FONT-SIZE: 12px; color:#000000;HEIGHT: 20px; padding-top: 3px; padding-bottom: 3px;
+}
+
+.style2 {FONT-SIZE: 12px; FONT-FAMILY: "新細明體", Arial, sans-serif; color: #FF0000; }
+.style3 {FONT-SIZE: 12px; FONT-FAMILY: "新細明體", Arial, sans-serif }
+.redLink {color: #FF0000}

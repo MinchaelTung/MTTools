@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="FileBrowser.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" 
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+             x:Name="MyMainPage">
+
+    <UserControl.Resources>
+        <sdk:UriMapper x:Key="PageUriMapper">
+            <sdk:UriMapping Uri="Files" MappedUri="/FileBrowserPage.xaml"/>
+            <sdk:UriMapping Uri="Document" MappedUri="/DocumentReaderPage.xaml"/>
+        </sdk:UriMapper>
+        
+        <Style x:Key="LinkStyle" TargetType="HyperlinkButton">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+<Grid x:Name="LayoutRoot" Background="White">
+ <Grid.ColumnDefinitions>
+ <ColumnDefinition Width="*" />
+ </Grid.ColumnDefinitions>
+ <Grid.RowDefinitions>
+ <RowDefinition Height="auto" />
+ <RowDefinition Height="*" />
+ </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <HyperlinkButton Content="Files" TargetName="MainFrame" NavigateUri="Files"
+                             Style="{StaticResource LinkStyle}" IsTabStop="False" />
+            <HyperlinkButton Content="Document" TargetName="MainFrame" NavigateUri="Document"
+                             Style="{StaticResource LinkStyle}" IsTabStop="False" />
+        </StackPanel>
+        <sdk:Frame Grid.Row="1" Name="MainFrame" DataContext="{Binding ElementName=MyMainPage}"
+                   UriMapper="{StaticResource PageUriMapper}" Source="Files"
+                   Navigating="MainFrame_Navigating">
+        </sdk:Frame>
+    </Grid>
+</UserControl>

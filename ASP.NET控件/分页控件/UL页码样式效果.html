@@ -1,0 +1,29 @@
+<html>
+  <head> 
+    
+    <title>UL页码样式效果</title>
+    
+    <link rel="stylesheet" type="text/css" href="paper.css">
+  </head>
+    
+  <body>
+  	<div class='pagination'>
+    <ul>
+    <li class='disablepage'>第一页</li>
+    <li class='currentpage'>&nbsp;1&nbsp;</li>
+    <li><a href='?page=2'>&nbsp;2&nbsp;</a></li>
+    <li><a href=''>&nbsp;3&nbsp;</a></li>
+    <li><a href=''>&nbsp;4&nbsp;</a></li>
+    <li><a href=''>&nbsp;5&nbsp;</a></li>
+    <li class='nextpage'><a href=''>最末页(15)</a></li>
+    <li><input id='paper_tran_to_number' type='text' value='1'/></li>
+    <li>
+    <button id ='paper_tran_to_go' onClick="javascript:location.href='?page='+document.getElementById('paper_tran_to_number').value+'';">Go
+    </button>
+    </li>
+    </ul>
+    </div>
+    <br/>
+
+</body>
+</html>

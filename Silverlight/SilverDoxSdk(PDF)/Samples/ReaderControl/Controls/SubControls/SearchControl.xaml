@@ -1,0 +1,39 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:res="clr-namespace:PDFTron.SilverDox.Samples.Resources"
+	mc:Ignorable="d"
+	x:Class="PDFTron.SilverDox.Samples.SubControls.SearchControl" d:DesignWidth="200" d:DesignHeight="33"
+		Width="160">
+	
+	<UserControl.Resources>
+      <res:StringResource x:Key="StringResource" />
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="auto" />
+		</Grid.ColumnDefinitions>
+			<TextBox x:Name="SearchTextBox" KeyDown="SearchTextBox_KeyDown" HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center" MouseEnter="SearchTextBox_MouseEnter">
+				<ToolTipService.ToolTip>
+					<ToolTip Placement="Bottom">
+						<TextBlock Name="TextSearchToolTipBlock" Text="{Binding Source={StaticResource StringResource}, Path=SearchTextToolTip}" />
+					</ToolTip>
+				</ToolTipService.ToolTip>
+			</TextBox>
+			<Button Grid.Column="1" x:Name="SearchButton" Click="SearchButton_Click">
+				<Image Source="/ReaderControl;component/Resources/bullet_magnify.png" Stretch="None" />
+				<ToolTipService.ToolTip>
+					<ToolTip Placement="Bottom">
+						<TextBlock Text="{Binding Source={StaticResource StringResource}, Path=SearchTextToolTip}" />
+					</ToolTip>
+				</ToolTipService.ToolTip>
+			</Button>
+		
+	</Grid>
+
+</UserControl>

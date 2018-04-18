@@ -1,0 +1,10 @@
+<OutOfBrowserSettings ShortName="SL模仿Windows 窗体的控制按钮和右下角拉伸效果" EnableGPUAcceleration="False" ShowInstallMenuItem="True">
+  <OutOfBrowserSettings.Blurb>Silverlight模仿Windows 窗体的控制按钮和右下角拉伸效果</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="SL模仿Windows 窗体的控制按钮和右下角拉伸效果" Height="600" Width="800" WindowStyle="None" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.SecuritySettings>
+    <SecuritySettings ElevatedPermissions="Required" />
+  </OutOfBrowserSettings.SecuritySettings>
+  <OutOfBrowserSettings.Icons />
+</OutOfBrowserSettings>

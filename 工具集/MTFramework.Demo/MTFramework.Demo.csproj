@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0F06A9C-3570-4FE8-B675-ACA7C1B5A0E2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MTFramework.Demo</RootNamespace>
+    <AssemblyName>MTFramework.Demo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MTFramework.Iso8583PackageUtil\MTFramework.Iso8583PackageUtil.csproj">
+      <Project>{557c055d-9140-4984-8195-b2bda4c63e11}</Project>
+      <Name>MTFramework.Iso8583PackageUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Reflections.DynamicImplementInterface\MTFramework.Reflections.DynamicImplementInterface.csproj">
+      <Project>{8cfd6428-c67e-4333-a2cc-9cdd6949465e}</Project>
+      <Name>MTFramework.Reflections.DynamicImplementInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils.ChineseDate\MTFramework.Utils.ChineseDate.csproj">
+      <Project>{38bfaaa4-cda4-412f-8ac1-bd399c439193}</Project>
+      <Name>MTFramework.Utils.ChineseDate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils.ConvertUitls\MTFramework.Utils.ConvertUitls.csproj">
+      <Project>{301a0c4b-9700-434c-ae63-4fab753f44ff}</Project>
+      <Name>MTFramework.Utils.ConvertUitls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils.Cryptography\MTFramework.Utils.Cryptography.csproj">
+      <Project>{4a95f1f3-162a-4a71-9787-3defd709dd51}</Project>
+      <Name>MTFramework.Utils.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils.Office\MTFramework.Utils.Office.csproj">
+      <Project>{e1de5316-338a-4f5b-b42e-05a6578e9b1f}</Project>
+      <Name>MTFramework.Utils.Office</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils.SerializationHelper\MTFramework.Utils.SerializationHelper.csproj">
+      <Project>{f5eb95f8-9030-4d88-97c4-39fcb45a67c0}</Project>
+      <Name>MTFramework.Utils.SerializationHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MTFramework.Utils\MTFramework.Utils.csproj">
+      <Project>{32b52281-a7ab-46bd-8026-881688e6e3e3}</Project>
+      <Name>MTFramework.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

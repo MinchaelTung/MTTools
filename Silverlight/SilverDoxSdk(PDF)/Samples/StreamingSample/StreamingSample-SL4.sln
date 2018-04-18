@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamingSample.Web", "StreamingSample.Web\StreamingSample.Web.csproj", "{92BABC03-475E-42AC-84BB-81DD4D08EF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamingSample-SL4", "StreamingSample\StreamingSample-SL4.csproj", "{19DD6ADB-156A-4C23-971D-C4C6CE82B983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92BABC03-475E-42AC-84BB-81DD4D08EF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92BABC03-475E-42AC-84BB-81DD4D08EF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92BABC03-475E-42AC-84BB-81DD4D08EF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92BABC03-475E-42AC-84BB-81DD4D08EF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DD6ADB-156A-4C23-971D-C4C6CE82B983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DD6ADB-156A-4C23-971D-C4C6CE82B983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DD6ADB-156A-4C23-971D-C4C6CE82B983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DD6ADB-156A-4C23-971D-C4C6CE82B983}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

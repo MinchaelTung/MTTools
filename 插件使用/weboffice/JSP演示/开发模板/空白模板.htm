@@ -1,0 +1,39 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script LANGUAGE=javascript>
+<!--
+// 初始化控件
+function WebOffice1_NotifyCtrlReady() {
+	document.all.WebOffice1.LoadOriginalFile("", "doc");
+}
+//-->
+</script>
+
+<script LANGUAGE=javascript FOR=WebOffice1 EVENT=NotifyCtrlReady>
+<!--
+	WebOffice1_NotifyCtrlReady()		// 在装载完Weboffice(执行<object>...</object>)控件后执行 "WebOffice1_NotifyCtrlReady"方法
+//-->
+</script>
+
+</head>
+<body>
+	<!-- 装载Weboffice控件 -->
+	<OBJECT id=WebOffice1 style="LEFT: 0px; TOP: 0px; WIDTH: 100%; HEIGHT: 500px"
+		classid="clsid:E77E049B-23FC-4DB8-B756-60529A35FAD5">
+		<PARAM NAME="_ExtentX" VALUE="6350">
+		<PARAM NAME="_ExtentY" VALUE="6350">
+		<PARAM NAME="BorderColor" VALUE="-2147483632">
+		<PARAM NAME="BackColor" VALUE="-2147483643">
+		<PARAM NAME="ForeColor" VALUE="-2147483640">
+		<PARAM NAME="TitlebarColor" VALUE="-2147483635">
+		<PARAM NAME="TitlebarTextColor" VALUE="-2147483634">
+		<PARAM NAME="BorderStyle" VALUE="1">
+		<PARAM NAME="Titlebar" VALUE="1">
+		<PARAM NAME="Toolbars" VALUE="1">
+		<PARAM NAME="Menubar" VALUE="1">
+	</OBJECT>
+	<!--   结束装载代码   -->
+</body>
+</html>

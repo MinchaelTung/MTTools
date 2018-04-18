@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e4de7656-dc2d-4ad8-ba2c-eb35a55f7bb7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:27759/WcfService/UploadFileService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UploadFileService.disco" MetadataType="Disco" ID="702d1b56-eec8-4d5d-94ee-b6f767897cab" SourceId="1" SourceUrl="http://localhost:27759/WcfService/UploadFileService.svc?disco" />
+    <MetadataFile FileName="UploadFileService.xsd" MetadataType="Schema" ID="c04c8d2e-333c-4a4c-9408-344686fc51dc" SourceId="1" SourceUrl="http://localhost:27759/WcfService/UploadFileService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UploadFileService1.xsd" MetadataType="Schema" ID="074cba5f-cea7-41f6-bfb0-a45fa1096807" SourceId="1" SourceUrl="http://localhost:27759/WcfService/UploadFileService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UploadFileService.wsdl" MetadataType="Wsdl" ID="375ac748-b898-430d-84f3-32e7f77f7bb3" SourceId="1" SourceUrl="http://localhost:27759/WcfService/UploadFileService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

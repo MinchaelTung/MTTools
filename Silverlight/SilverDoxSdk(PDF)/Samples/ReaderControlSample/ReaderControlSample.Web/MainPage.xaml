@@ -1,0 +1,49 @@
+﻿<UserControl  x:Class="ReaderControlSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:docView="clr-namespace:PDFTron.SilverDox.Samples;assembly=ReaderControl"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="900"
+    Loaded="UserControl_Loaded">
+            <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Uncomment to include a URI address bar that can be used to load in remotely stored .xod documents. First row definition should have its height changed to 30. -->
+            <!-- Methods Content_FullScreenChanged, UriTextBox_KeyDown and UriButton_Click in MainPage.xaml.cs will need to be uncommented as well. -->
+           <!--  <TextBlock Text="Uri of xod file:" Grid.Column="0" FontSize="13" VerticalAlignment="Center"/>
+            <TextBox x:Name="UriTextBox" Text="http://www.xodo.com/streaming/" KeyDown="UriTextBox_KeyDown" Grid.Column="1" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center"/>
+             <Button x:Name="UriButton" Grid.Column="2" Height="25" Content="Go" Click="UriButton_Click"/> -->
+            
+        </Grid>
+				
+		<!-- To add override the initial document loaded, set the url to the InitialDocumentUrl property of ReaderControl
+			 e.g. InitialDocumentUrl="http://www.pdftron.com/silverdox/samples/ClientBin/mech.xod"	-->
+                
+		<docView:ReaderControl x:Name="myReaderControl" 
+                                       Grid.Row="1"                                       
+                                       EnableOpenLocalFileControl="True" 
+                                       EnableThumbnailListControl="True"
+                                       EnableFullTextSearchControl="True"
+                                       EnableOutlineTreeControl="True"
+									   EnablePageNavigationControl="True"
+                                       EnableFitModeControl="True"
+                                       ShowToolbar="True"
+                                       ShowSideWindow="True" 
+                                       EnableLayoutControl="True"
+                                       EnableRotateControl="True"
+									   />
+
+	</Grid>
+</UserControl>

@@ -1,0 +1,80 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+		xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+		xmlns:res="clr-namespace:PDFTron.SilverDox.Samples.Resources" mc:Ignorable="d"
+		x:Class="PDFTron.SilverDox.Samples.SideWindowControl" d:DesignWidth="110" d:DesignHeight="200"
+		x:Name="MySideWindowControl">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/ReaderControl;component/Resources/ResourceDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+			<res:StringResource x:Key="StringResource" />
+		</ResourceDictionary>
+	</UserControl.Resources>
+	<Grid x:Name="LayoutRoot" Background="{Binding Background, ElementName=MySideWindowControl}">
+		<sdk:TabControl Margin="5" x:Name="SideTabControl">
+			<sdk:TabItem x:Name="ThumbnailTabItem" HorizontalAlignment="Center" Visibility="Collapsed">
+				<sdk:TabItem.Header>
+					<Image Source="/ReaderControl;component/Resources/pictures_thumbs.png" Stretch="None" />
+				</sdk:TabItem.Header>
+				<ToolTipService.ToolTip>
+					<ToolTip Placement="Bottom">
+						<TextBlock Text="{Binding Source={StaticResource StringResource}, Path=ThumbnailsToolTip}" />
+					</ToolTip>
+				</ToolTipService.ToolTip>
+			</sdk:TabItem>
+			<sdk:TabItem x:Name="OutlineTabItem" HorizontalAlignment="Center" Visibility="Collapsed">
+                <sdk:TabItem.Header>
+                    <Image Source="/ReaderControl;component/Resources/outline.png" Stretch="None" />
+                </sdk:TabItem.Header>
+
+                <ToolTipService.ToolTip>
+                    <ToolTip Placement="Bottom">
+                        <TextBlock Text="Outlines"/>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
+            </sdk:TabItem>
+
+
+
+            <sdk:TabItem x:Name="SearchTabItem" HorizontalAlignment="Center" Visibility="Collapsed">
+                <sdk:TabItem.Header>
+                    <Image Source="/ReaderControl;component/Resources/find.png" Stretch="None" />
+                </sdk:TabItem.Header>
+
+                <ToolTipService.ToolTip>
+                    <ToolTip Placement="Bottom">
+                        <TextBlock Text="Whole Document Search"/>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
+            </sdk:TabItem>
+
+            <sdk:TabItem x:Name="AnnotationTabItem" HorizontalAlignment="Center" Visibility="Collapsed">
+                <sdk:TabItem.Header>
+                    <Image Source="/ReaderControl;component/Resources/note.png" Stretch="None" />
+                </sdk:TabItem.Header>
+
+                <ToolTipService.ToolTip>
+                    <ToolTip Placement="Bottom">
+                        <TextBlock Text="Annotations"/>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
+            </sdk:TabItem>
+
+			<!--<sdk:TabItem x:Name="DocumentTabItem" HorizontalAlignment="Center" Visibility="Collapsed">
+				<sdk:TabItem.Header>
+					<Image Source="/ReaderControl;component/Resources/bullet_magnify.png" Stretch="None" />
+				</sdk:TabItem.Header>
+				<ToolTipService.ToolTip>
+					<ToolTip Placement="Bottom">
+						<TextBlock Text="Document Information" />
+					</ToolTip>
+				</ToolTipService.ToolTip>
+			</sdk:TabItem>-->
+		</sdk:TabControl>
+	</Grid>
+</UserControl>

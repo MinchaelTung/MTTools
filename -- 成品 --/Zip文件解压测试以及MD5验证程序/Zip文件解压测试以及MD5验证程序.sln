@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkingEAsy.ZipValidationApp", "LinkingEAsy.ZipValidationApp\LinkingEAsy.ZipValidationApp.csproj", "{AC3A42B3-C57C-4B8F-ABAD-406BBF6B4445}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{ADEBB76C-D447-4AEB-AC37-91EB87BB081F}"
+	ProjectSection(SolutionItems) = preProject
+		DLL\ICSharpCode.SharpZipLib.dll = DLL\ICSharpCode.SharpZipLib.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC3A42B3-C57C-4B8F-ABAD-406BBF6B4445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3A42B3-C57C-4B8F-ABAD-406BBF6B4445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3A42B3-C57C-4B8F-ABAD-406BBF6B4445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3A42B3-C57C-4B8F-ABAD-406BBF6B4445}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

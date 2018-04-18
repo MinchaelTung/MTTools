@@ -1,0 +1,2566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>SilverDox</name>
+  </assembly>
+  <members>
+    <member name="T:PDFTron.SilverDox.Controls.DocumentViewer">
+      <summary>
+            A full-featured control used for displaying a <see cref="T:PDFTron.SilverDox.Documents.Document" />. The viewer supports text selection and text search, and several page view modes.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.#ctor">
+      <summary>
+            Constructs a <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationManager">
+      <summary>
+            Manages the annotations displayed over the <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Document" />'s pages displayed in the viewer.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationPopupContentChanged">
+      <summary>
+            Occurs when the user manually changes the contents of a popup
+            NOTE: Does not trigger when PopupContents is set programatically
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationResized">
+      <summary>
+            Occurs when an annotation is resized
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsAdded">
+      <summary>
+            Occurs when an annotation is added
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsCreated">
+      <summary>
+            Occurs when an annotation is created via. a tool
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsDeselected">
+      <summary>
+            Occurs when an annotation is deselected
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsDragged">
+      <summary>
+            Occurs when annotations are dragged by the user; 
+            WARNING: triggered a ton of times when user is move dragging annotations
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsMoveCompleted">
+      <summary>
+            Occurs when the user finishes moving annotations (i.e the mouse is released)
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsRemoved">
+      <summary>
+            Occurs when an annotation is removed
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationsSelected">
+      <summary>
+            Occurs when an annotation is selected
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.CloseDocument">
+      <summary>
+            Closes the current document leaving a blank viewer.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.CurrentPageNumber">
+      <summary>
+            Get or set the page number of the currently displayed page.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.CustomCursor">
+      <summary>
+            The cursor to use when in <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.ToolMode" /> is set to <see cref="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.Custom" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.DefaultFitModeHeight">
+      <summary>
+            Defines the <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.FitModeHeight" /> that will be set when a new document is opened. Initially set to <c>null</c>, in which case a new document will
+            be with the same <c>FitModeHeight</c> as the current document.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.DefaultFitModeWidth">
+      <summary>
+            Defines the <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.FitModeWidth" /> that will be set when a new document is opened. Initially set to <c>null</c>, in which case a new document will
+            be with the same <c>FitModeWidth</c> as the current document.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.DefaultZoomLevel">
+      <summary>
+            Defines the default <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> level when a new document is openened with <c>FitModeWidth</c> and <c>FitModeHeight</c> set to <c>PageViewModes.Zoom</c>.
+            If set to <c>null</c>, a new document will open with the same zoom level as the current document.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.DisplayBookmark(PDFTron.SilverDox.Documents.Bookmark)">
+      <summary>
+            Scrolls the viewer so that the position of the bookmark is in the upper-left corner of the viewer.
+            </summary>
+      <param name="bookmark">The bookmark that specifies the location to scroll to.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.DisplayFirstPage">
+      <summary>
+            Scrolls the viewer so that the upper-left corner of the <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Document" />'s first page is in the upper-left corner of the viewer.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.DisplayLastPage">
+      <summary>
+            Scrolls the viewer so that the upper-left corner of the <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Document" />'s last page is in the upper-left corner of the viewer.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.DisplayMode">
+      <summary>
+            The mode that controls which pages the viewer will display.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.Document">
+      <summary>
+            The <see cref="T:PDFTron.SilverDox.Documents.Document" /> that is currently being displayed by the viewer.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.FitModeHeight">
+      <summary>
+            Read if the document's <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> property will be adjusted so that the height of the current page or panel will exactly fit into the available space. This parameter is set with the method <see cref="M:PDFTron.SilverDox.Controls.DocumentViewer.SetFitMode(PDFTron.SilverDox.Controls.DocumentViewer.FitModes,PDFTron.SilverDox.Controls.DocumentViewer.FitModes)" />.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.FitModeHeightProperty">
+      <summary>
+            For binding to <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.FitModeHeight" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.FitModeWidth">
+      <summary>
+            Read if the document's <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> property will be adjusted so that the width of the current page or panel will exactly fit into the available space. This parameter is set with the method <see cref="M:PDFTron.SilverDox.Controls.DocumentViewer.SetFitMode(PDFTron.SilverDox.Controls.DocumentViewer.FitModes,PDFTron.SilverDox.Controls.DocumentViewer.FitModes)" />.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.FitModeWidthProperty">
+      <summary>
+            For binding to <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.FitModeWidth" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.GetCanvas(System.Int32)">
+      <summary>
+            Gets the canvas of a currently displayed page.
+            </summary>
+      <param name="pageNumber">The page number of the requested canvas.</param>
+      <returns>The canvas element representing the page. If the page is not visible, return value is <c>null</c>.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.GetCanvasAtPoint(System.Windows.Point)">
+      <summary>
+            Gets the page number and canvas element at a given screen location.
+            </summary>
+      <param name="point">A point relative to the overall Silverlight plug-in content area.</param>
+      <returns>The canvas element and its page number at the location specified in point.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.GetSelectedText">
+      <summary>
+            Returns the selected text in the current document
+            </summary>
+      <returns>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;returns&gt; documentation for "M:PDFTron.SilverDox.Controls.DocumentViewer.GetSelectedText"]</p>
+      </returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.LoadAsync(PDFTron.SilverDox.IO.IPartRetriever,System.Action{System.Exception})">
+      <summary>
+            Loads a .xod document into the viewer.
+            </summary>
+      <param name="partRetriever">A concrete instance of <see cref="T:PDFTron.SilverDox.IO.IPartRetriever" />.</param>
+      <param name="callback">A callback function that is called when its <c>Document</c> property has been initilized.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnApplyTemplate">
+      <summary>
+            (Overrides <see cref="M:FrameworkElement.OnApplyTemplate" />.)
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentKeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+      <summary>
+            Called in response to a KeyDown event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentKeyUp(System.Object,System.Windows.Input.KeyEventArgs)">
+      <summary>
+            Called in response to a KeyUp event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentLoaded(System.Object,System.Windows.RoutedEventArgs)">
+      <summary>
+            Called in response to the Loaded event of the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseEnter(System.Object,System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called in response to a MouseEnter event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseLeave(System.Object,System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called in response to a MouseLeave event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+      <summary>
+            Called in response to a MouseLeftButtonDown event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseLeftButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+      <summary>
+            Called in response to a MouseLeftButtonUp event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseMove(System.Object,System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called in response to a MouseMove event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseRightButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+      <summary>
+            Called in response to a MouseRightButtonDown event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseRightButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+      <summary>
+            Called in response to a MouseRightButtonUp event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object where the event occured.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.OnContentMouseWheel(System.Object,System.Windows.Input.MouseWheelEventArgs)">
+      <summary>
+            Called in response to a MouseWheel event in the DocumentViewer's viewing area.
+            </summary>
+      <param name="sender">The object OnContentMouseWheel.</param>
+      <param name="e">The data for the event.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.PageCount">
+      <summary>
+            The number of pages in the currently displayed document.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.PropertyChanged">
+      <summary>
+            Notification event that is raised when a bound property changes.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.RefreshTemplate">
+      <summary>
+            Used to refresh the DocumentViewer after it has been assigned a new template to change the page layout.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.RotateClockwise">
+      <summary>
+            Rotates all pages in the currently displayed document clockwise by 90 degrees.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.RotateCounterClockwise">
+      <summary>
+            Rotates all pages in the currently displayed document counter-clockwise by 90 degrees.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.Scale">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "P:PDFTron.SilverDox.Controls.DocumentViewer.Scale"]</p>
+      </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.ScrollToAnnotation(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Adjusts the document viewer's x and y position so it focuses on the given annotation.
+            </summary>
+      <param name="annotation">The annotation to move the document viewer to</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.SearchTextAsync(System.String,PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes,System.Action{PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs})">
+      <summary>
+            Searches for a particular text string on the currently displayed <see cref="T:PDFTron.SilverDox.Documents.Document" />, starting on the current page (see <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.CurrentPageNumber" />).
+            </summary>
+      <param name="pattern">The string to search for.</param>
+      <param name="mode">The options for search, controlling options such as case sensitivity and search direction.</param>
+      <param name="searchNextCompleteCallback">A callback function that is called within <see cref="M:PDFTron.SilverDox.Controls.Document.SearchTextAsync" />, which is used to deliver the results of the last search operation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.SetFitMode(PDFTron.SilverDox.Controls.DocumentViewer.FitModes,PDFTron.SilverDox.Controls.DocumentViewer.FitModes)">
+      <summary>
+            Sets how the document will scale to fit the size of the scrollviewer's viewport.
+            </summary>
+      <param name="fitModeWidth">Controls if the document's <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> property will be adjusted so that the width of the current page or panel will exactly fit into the available space.</param>
+      <param name="fitModeHeight">Controls if the document's <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> property will be adjusted so that the height of the current page or panel will exactly fit into the available space.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.ToolMode">
+      <summary>
+            Changes the behavior of the viewer. See <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes" /> for valid settings and their descriptions.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Controls.DocumentViewer.ToolModeChanged">
+      <summary>
+            Occurs when the DocumentViewer tool mode is changed
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom">
+      <summary>
+            Used to get or set the magnification factor of the displayed pages.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.DocumentViewer.ZoomTo(System.Double,System.Double,System.Double)">
+      <summary>
+            Adjusts the viewer's zoom factor, and positions the point (x,y) at the upper left corner of the viewer.
+            </summary>
+      <param name="x">The number of units that the scroll viewer is scrolled to the right.</param>
+      <param name="y">The number of units that the scroll viewer is scrolled down.</param>
+      <param name="zoom">The zoom value. The content is zoomed before it is scrolled.</param>
+    </member>
+    <member name="T:PDFTron.SilverDox.Controls.DocumentViewer.DisplayModes">
+      <summary>
+            Lists the possible modes for <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.DisplayMode" />, which controls which pages the viewer will display.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.DisplayModes.AllPages">
+      <summary>
+            All pages will be visible.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.DisplayModes.SinglePage">
+      <summary>
+            Only the current page will be visible.
+            Intended to be used where the viewer's <c>ItemsPanelTemplate</c> is a vertically orriented stack panel,
+            with the <c>HorizontalAlignment</c> and <c>VerticalAlignment</c> attributes set to <c>Center</c>. This
+            is the default <c>ItemsPanelTemplate</c>.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.DisplayModes.DualPageFacing">
+      <summary>
+            Up to two pages will be visible, with an odd numbered page rendered first.
+            Intended to be used where the viewer's <c>ItemsPanelTemplate</c> is set to the FacingPanel layout Panel
+            found in the ReaderControl sample project, with the <c>CoverFacing</c> attribute set to <c>false</c>. (<b>SilverDoxSdk\Samples\ReaderControl\Utility\FacingPanel.cs</b>)
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.DisplayModes.DualPageCoverFacing">
+      <summary>
+            Up to two pages will be visible, with an even numbered page rendered first.
+            Intended to be used where the viewer's <c>ItemsPanelTemplate</c> is set to the FacingPanel layout Panel
+            found in the ReaderControl sample project, with the <c>CoverFacing</c> attribute set to <c>true</c>. (<b>SilverDoxSdk\Samples\ReaderControl\Utility\FacingPanel.cs</b>)
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Controls.DocumentViewer.FitModes">
+      <summary>
+            Lists common modes of viewing a document's pages.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.FitModes.None">
+      <summary>
+        <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> level is not constrained. 
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.FitModes.Page">
+      <summary>
+        <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> level is constrained such that the current page's width or height will exactly fill the available space.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.FitModes.Panel">
+      <summary>
+        <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.Zoom" /> level is constrained such that the current document's layout panel's width or height will exactly fill the available space.
+            The layout panel is the width and height of the entire scrollable content.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes">
+      <summary>
+        <c>DocumentViewer</c> supports 'built-in' tool modes which change the behavior of the viewer.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.Pan">
+      <summary>
+            The mouse can be used to pan the document.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.TextSelect">
+      <summary>
+            The mouse can be used to select text.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.PanAndAnnotationEdit">
+      <summary>
+            The mouse can be used to pan the document except when it is over an annotion, when it can be used to select/move/resize the annotation.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationEdit">
+      <summary>
+            The mouse can be used to select/move/resize annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateCustom">
+      <summary>
+            The mouse can be used to create a custom annotation that derives from <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" />. Note that <see cref="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AnnotationCreator" /> must be set to a static method defined by the custom annotation that returns a new annotation.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateEllipse">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.Ellipse" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateFreeHand">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.FreeHand" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateLine">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.Line" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateRectangle">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.Rectangle" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateSticky">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.Sticky" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateTextHighlight">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextHighlight" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateTextStrikeout">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextStrikeout" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.AnnotationCreateTextUnderline">
+      <summary>
+            The mouse can be used to create <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextUnderline" /> annotations.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.DocumentViewer.ToolModes.Custom">
+      <summary>
+            The mouse behavior is defined by the user, and will not select text or cause the document to pan. The <c>DocumentViewer</c> does not implement any 
+            keyboard or mouse behaviour in response to keyboard or mouse events when in <c>Custom</c> tool mode.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Controls.FullTextSearchControl">
+      <summary>
+            A control that implements a full document text search for a document displayed in a <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" />.
+            The search results are displayed in a <c>ListBox</c>.
+            Clicking on a search result will cause the <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" /> to navigate to the corresponding page.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.FullTextSearchControl.#ctor">
+      <summary>
+            Initializes a new instance of the FullTextSearchControl class. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.FullTextSearchControl.IsCaseSensitive">
+      <summary>
+            Gets or sets a value that indicates whether the search term is case sensitive.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.FullTextSearchControl.IsCaseSensitiveProperty">
+      <summary>
+            Identifies the IsCaseSensitive depencency property.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.FullTextSearchControl.PageStringFormat">
+      <summary>
+            The format string for displaying page number as a string.
+            This string is in the .NET composite format, where {0} defines the page number.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.FullTextSearchControl.Search(System.String,PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes)">
+      <summary>
+            Searches the entire document for the specified string and populates the control's <c>ListBox</c> with the results.
+            </summary>
+      <param name="searchString">The string to search for in the <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" />'s <see cref="T:PDFTron.SilverDox.Documents.Document" />.</param>
+      <param name="textSearchModes">The <see cref="T:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes" /> for the search. Only <see cref="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.WholeWord" /> and <see cref="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.CaseSensitive" /> are relevant for the whole document search.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.FullTextSearchControl.SearchTerm">
+      <summary>
+            Gets or sets a value that is to be searched in the <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" /></summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.FullTextSearchControl.SearchTermProperty">
+      <summary>
+            Identifies the SearchTerm depencency property.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.FullTextSearchControl.SearchWithOptions">
+      <summary>
+            Searches the document with options: IsCaseSensitive, WholeWordOnly and SearchTerm
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.FullTextSearchControl.WholeWordOnly">
+      <summary>
+            Gets or sets a value that indicates wether the search term should be match whole words only.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Controls.FullTextSearchControl.WholeWordOnlyProperty">
+      <summary>
+            Identifies the WholeWordOnly depencency property.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Controls.ThumbnailsControl">
+      <summary>
+            A control that displays thumbnail images of the document in a <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" />.
+            Clicking on a thumbnail will cause the <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" /> to navigate to the corresponding page,
+            and scrolling <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" /> will cause the currently displayed page in the <c>ThumbnailsControl</c>
+            to be highlighted.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.ThumbnailsControl.#ctor">
+      <summary>
+            Initializes a new instance of the ThumbnailsControl class. 
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Controls.ThumbnailsControl.InitializeComponent">
+      <summary>
+            InitializeComponent
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Controls.ThumbnailsControl.ScaleFactor">
+      <summary>
+            The scaling factor of the displayed thumbnails.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Bookmark">
+      <summary>
+            Represents a bookmark in a <see cref="T:PDFTron.SilverDox.Documents.Document" />. Bookmarks typically represent an outline of the document, and as each bookmark is usually associated with a specific page in a document, they are typically used to facilitate navigation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Bookmark.Children">
+      <summary>
+            A collection of child bookmarks.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Bookmark.Name">
+      <summary>
+            The name of the bookmark.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Bookmark.PageNumber">
+      <summary>
+            The page which the bookmark references.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Bookmark.Parent">
+      <summary>
+            The parent of this bookmark.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Bookmark.VerticalOffset">
+      <summary>
+            The number of units down the page which represents the location that the bookmark references. Each unit is 1/96th of an inch.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Document">
+      <summary>
+            Represents a document with individual pages (canvases) that can be displayed on screen and printed.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.#ctor">
+      <summary>
+            Constructs an empty <see cref="T:PDFTron.SilverDox.Documents.Document" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.Bookmarks">
+      <summary>
+            The collection of bookmarks created when the <see cref="T:PDFTron.SilverDox.Documents.Document" /> is initilized.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.CancelRequest(System.Int32)">
+      <summary>
+            Cancels outstanding requests that have been made for resources associated with the specified page.
+            </summary>
+      <param name="pageNumber">The number of the page for which requests will be canceled.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.LoadAsync(PDFTron.SilverDox.IO.IPartRetriever,System.Action{System.Exception})">
+      <summary>
+            Initilizes a <see cref="T:PDFTron.SilverDox.Documents.Document" /> so that it can be used to load page canvases.
+            </summary>
+      <param name="partRetriever">A concrete instance of a <see cref="T:PDFTron.SilverDox.IO.IPartRetriever" />. There are two built-in concrete implementations of <see cref="T:PDFTron.SilverDox.IO.IPartRetriever" />: <see cref="T:PDFTron.SilverDox.IO.LocalPartRetriever" />, which is used to access files on the local file system, and <see cref="T:PDFTron.SilverDox.IO.HttpPartRetriever" />, which is used to access files on a web server.</param>
+      <param name="callback">A callback function that is called when the <see cref="T:PDFTron.SilverDox.Documents.Document" /> has been intilized.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.LoadCanvasAsync(System.Int32,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs},System.Action{PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs},System.Action{PDFTron.SilverDox.Documents.Link})">
+      <summary>
+            Loads the canvas for a given page number.
+            </summary>
+      <param name="pageNumber">The page number of the requested canvas.</param>
+      <param name="onLoadCanvasCallback">A callback function that is called when the canvas is loaded. Note that canvas may be missing elements, which will be added to the canvas as they are loaded.</param>
+      <param name="onLoadCanvasAndResourcesCallback">A callback function that is called when the canvas and all its associated resources are loaded. It is at this time that the canvas may be displayed without any missing elements.</param>
+      <param name="onLinkReadyCallback">A callback function that is called when a link is created on the canvas. The callback's argument provides access the link, which may be used to alter the behavior of the link such as its response to mouse events.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.LoadPartAsync(System.String,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs},System.Object)">
+      <summary>
+            Loads the specified part. This is a low-level method that would not normally be used unless creating a custom document viewer with very specific loading requirements.
+            </summary>
+      <param name="partName">The name of the part, typicially determined by referencing the properties of a particular page's <see cref="M:PDFTron.SilverDox.Documents.PageInfo" />.</param>
+      <param name="onLoadPartCallback">The callback function that is called when the part has been loaded.</param>
+      <param name="userData">Custom data that will be included in the callback function's arguments.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.LoadThumbnailAsync(System.Int32,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs})">
+      <summary>
+            Loads a thumbnail image for a particular page.
+            </summary>
+      <param name="pageNumber">The page number of the requested thumbnail.</param>
+      <param name="onLoadThumbnailCallback">The callback function that is called when the thumbnail has been loaded.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.Metadata">
+      <summary>
+            The metadata associated with the document. Metadata contains information such as the document's author and creation date. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.Pages">
+      <summary>
+            A collection <see cref="T:PDFTron.SilverDox.Documents.PageInfo" /> objects describing every page in the document.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Document.Print(System.Boolean,System.Collections.Generic.List{System.Windows.Controls.Canvas})">
+      <summary>
+            Invokes the system's print dialog box, allowing the user to print the document.
+            </summary>
+      <param name="fitToPage">
+            If true pages will be scaled down to fit the page.
+            </param>
+      <param name="annotationCanvases">
+            Canvases that appear on top of the document's pages.
+            </param>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs">
+      <summary>
+            Arguments used as a parameter in the user defined callback function provided to <see cref="M:PDFTron.SilverDox.Documents.Document.LoadCanvasAsync(System.Int32,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs},System.Action{PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs},System.Action{PDFTron.SilverDox.Documents.Link})" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.AsyncState">
+      <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.AsyncWaitHandle">
+      <summary>
+            Gets a <c>WaitHandle</c> that is used to wait for an asynchronous operation to complete.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.CompletedSynchronously">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.Error">
+      <summary>
+            If an error has occured, Error contains information about the error; otherwise, Error is null.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.IsCompleted">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.PageCanvas">
+      <summary>
+            The canvas for the specified page of the <see cref="T:PDFTron.SilverDox.Documents.Document" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs.PageNumber">
+      <summary>
+            The page number of <c>PageCanvas</c>.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs">
+      <summary>
+            Arguments used as a parameter in the user defined callback function provided to <see cref="M:PDFTron.SilverDox.Documents.Document.LoadPartAsync(System.String,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs},System.Object)" />. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.AsyncState">
+      <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.AsyncWaitHandle">
+      <summary>
+            Gets a <c>WaitHandle</c> that is used to wait for an asynchronous operation to complete.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.CompletedSynchronously">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.Error">
+      <summary>
+            If an error has occured, Error contains information about the error; otherwise, Error is null.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.IsCompleted">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.Part">
+      <summary>
+            A byte array which is the part's data.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadPartAsyncCallbackArgs.PartName">
+      <summary>
+            The name of the part.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs">
+      <summary>
+            Arguments used as a parameter in the user defined callback function provided to <see cref="M:PDFTron.SilverDox.Documents.Document.LoadThumbnailAsync(System.Int32,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs})" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.AsyncState">
+      <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.AsyncWaitHandle">
+      <summary>
+            Gets a <c>WaitHandle</c> that is used to wait for an asynchronous operation to complete.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.BitmapImage">
+      <summary>
+            The thumbnail image.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.CompletedSynchronously">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.Error">
+      <summary>
+            If an error has occured, Error contains information about the error; otherwise, Error is null.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.IsCompleted">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Document.OnLoadThumbnailAsyncCallbackArgs.PageNumber">
+      <summary>
+            The thumbnail's page number.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Link">
+      <summary>
+            A link that is placed on a <see cref="T:PDFTron.SilverDox.Documents.Document" /> page. Links, which are used to navigate somewhere when clicked on, may point to an external URI, or a location within the document.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Link.PageNumber">
+      <summary>
+            The page number of the <see cref="T:PDFTron.SilverDox.Documents.Document" /> that the link points to.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Link.ResidentPageNumber">
+      <summary>
+            The page number of the <see cref="T:PDFTron.SilverDox.Documents.Document" /> that the link exists on.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Link.VerticalOffset">
+      <summary>
+            The number of units down from the top of the page that the link points to. A unit is 1/96th of an inch.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Metadata">
+      <summary>
+            A dictionary containing document metadata, such as the document's author and creation date.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Created">
+      <summary>
+            The date when the source document was created.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Creator">
+      <summary>
+            The document's author.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Description">
+      <summary>
+            The document's description.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Keywords">
+      <summary>
+            The document's keywords, delimited by semi-colons.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Modified">
+      <summary>
+            The date when the source document was last modified.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Producer">
+      <summary>
+            If the source document was a PDF, the producer of the source PDF document.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Subject">
+      <summary>
+            The document's subject.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Metadata.Title">
+      <summary>
+            The document's title.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.PageInfo">
+      <summary>
+            Describes a page in terms of its dimensions, resources and whether all the resources have been fully loaded. A collection of PageInfo objects is created when a <see cref="T:PDFTron.SilverDox.Documents.Document" /> is initilized, and are accessible via <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" /> property. Note that PageInfo does not contain the page content, which can be acquired using the <see cref="M:PDFTron.SilverDox.Documents.Document.LoadCanvasAsync(System.Int32,System.Action{PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs},System.Action{PDFTron.SilverDox.Documents.Document.OnLoadCanvasAsyncCallbackArgs},System.Action{PDFTron.SilverDox.Documents.Link})" /> method.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.PageInfo.Annotations">
+      <summary>
+            A read-only list of the annotations managed by a <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" />'s <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.AnnotationManager" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.PageInfo.FullyLoaded">
+      <summary>
+            Indicates if all the resources required to render the page entirely have been loaded.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.PageInfo.Height">
+      <summary>
+            The height of the page in units of 1/96th of an inch.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.PageInfo.ResourceNames">
+      <summary>
+            A list of the names of the resources which are required to render the page. This is a low-level property that would not normally be used unless creating a custom document viewer with very specific loading requirements. If so, it would be used in conjunction with <see cref="M:PDFTron.SilverDox.Documents.Document.LoadPartAsync" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.PageInfo.Width">
+      <summary>
+            The width of the page in units of 1/96th of an inch.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.Annotation">
+      <summary>
+            Abstract base class from which all annotations derive.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.#ctor">
+      <summary>
+            Called by subclasses during construction to set properties common to all annotations.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>Initializes a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" /> class</summary>
+      <param name="annotationManager">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="annotationManager"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.Annotation.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager">
+      <summary>
+            Gets or sets the annotation's <see cref="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Author">
+      <summary>
+            Represents the author of the annotation. Default is an empty string.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Bottom">
+      <summary>
+            Gets the y-axis value of the bottom of the annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.CreatePopupCanvas">
+      <summary>
+            Creates canvas used as the popup when an annotation is double clicked on. Override this method to provide a customized popup canvas.
+            </summary>
+      <returns>The popup canvas.</returns>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.DateModified">
+      <summary>
+            Gets or sets the last date and time that the annotation was modified.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Height">
+      <summary>
+            Gets or sets the annotation's height.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Id">
+      <summary>
+            A unique identifier that can be assigned to determine different annotations
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.IsCopyable">
+      <summary>
+            Indicates whether or not the user should be able to copy this annotation
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.IsCreated">
+      <summary>
+            Gets or sets if the annotation has finished being created by the user.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.IsSelectable">
+      <summary>
+            Indicates whether or not the user can select this annotation
+            Default is true
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Left">
+      <summary>
+            Gets the x-axis value of the left side of the annotation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.MirroredHorizontally">
+      <summary>
+            True if the annotation has been mirrored horizontally.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.MirroredVertically">
+      <summary>
+            True if the annotation has been mirrored vertically.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.NoMove">
+      <summary>
+            Gets or sets if this annotation can be moved by the user.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.NoResize">
+      <summary>
+            Gets or sets if this annotation can be resized by the user.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.NoZoom">
+      <summary>
+            Gets or sets if this annotation scales with the page.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.OnAnnotationResizeEnded(PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs)">
+      <summary>
+             Called by the annotation's <see cref="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager" /> when the user has finished resizing the annotation
+            </summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.OnAnnotationResizeStarted">
+      <summary>
+             Called by the annotation's <see cref="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager" /> when the user has began resizing this annotation
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.OnCreateMouseDown(System.Windows.Input.MouseButtonEventArgs)">
+      <summary>
+            Called by the annotation's <see cref="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager" /> when a MouseDown event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="e">The event data.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.OnCreateMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called by the annotation's <see cref="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager" /> when a MouseMove event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="mouseMoveEventArgs">The event data.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Annotation.OnCreateMouseUp(System.Windows.Input.MouseButtonEventArgs,System.Boolean)">
+      <summary>
+            Called by the annotation's <see cref="P:PDFTron.SilverDox.Documents.Annotations.Annotation.AnnotationManager" /> when a MouseUp event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="e">The event data.</param>
+      <param name="wasDoubleClick">True if the event marks the completion of a double click.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PageNumber">
+      <summary>
+            Gets or sets the page number of a document that the annotation appears on.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PopupContents">
+      <summary>
+            Gets or sets the contents of the annotation's popup.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PopupHeight">
+      <summary>
+            Gets or sets the annotation's popup's height.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PopupIsVisible">
+      <summary>
+            Gets or sets if the annotation's popup is visible.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PopupWidth">
+      <summary>
+            Gets or sets the annotation's popup's width.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PopupX">
+      <summary>
+            Gets or sets the annotation's popup's x-axis position.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.PopupY">
+      <summary>
+            Gets or sets the annotation's popup's y-axis position.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Documents.Annotations.Annotation.PropertyChanged">
+      <summary>
+            Occurs when a property changes in the annotation 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Right">
+      <summary>
+            Gets the x-axis value of the right side of the annotation. 
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.Annotation.shouldBeCreated">
+      <summary>
+            Determines whether or not the annotation should be created in OnCreateMouseUp
+            This is used for TextMarkups that do not select any text to prevent it from 
+            being created when the user releases the mouse
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Subject">
+      <summary>
+            Represents the subject of the annotation. Default is the annotation's type.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Top">
+      <summary>
+            Gets the y-axis position of the top of the annotation. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Width">
+      <summary>
+            Gets or sets the annotation's width;
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.X">
+      <summary>
+            Gets or sets the annotation's x-axis position.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Annotation.Y">
+      <summary>
+            Gets or sets the annotation's y-axis position.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager">
+      <summary>
+            Represents an object that manages the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" />s that appear on a <see cref="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.Document" />'s pages when displayed in a <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AddAnnotation(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Adds and displays a new annotation.
+            </summary>
+      <param name="annotation">The new annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AddCustomAnnotationTypes(System.Type[])">
+      <summary>
+            This method must be used to register custom annotation types before they can be saved or loaded using <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SaveAnnotations" /> and <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />. Built-in types do not need to be added.
+            </summary>
+      <param name="additionalAnnotationTypes">An array of the types to be added.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AddUndoAnnotationState(PDFTron.SilverDox.Documents.Annotations.Annotation,System.Collections.Generic.Dictionary{System.String,System.Object})">
+      <summary>
+            Allows users to manually define an undo command on a specified annotation. 
+            </summary>
+      <param name="annotation">The annotation that's the target of the undo</param>
+      <param name="oldPropValues">A Dictionary containing the property name (key) and property value (value) for the annotation to revert back to in an undo</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AnnotationCreator">
+      <summary>
+            References a static method, defined by an annotation, that takes an <c>AnnotationManager</c> as a parameter and returns a new annotation. The method that is referenced is called when a MouseDown event is occurs and
+            the <see cref="P:PDFTron.SilverDox.Controls.DocumentViewer.ToolMode" /> is set to a mode which creates an annotation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AnnotationsList">
+      <summary>
+            Returns a list of all the annotations under the control of <c>AnnotationManager</c></summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AnnotationsModified">
+      <summary>
+            Gets whether or not any changes has been made since the last time annotations were loaded
+            
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CanPaste">
+      <summary>
+            Gets whether or not annotations has been copied for <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.PasteCopiedAnnotations(System.Nullable{System.Int32})" /></summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CanRedo">
+      <summary>
+            Gets whether or not there is a command to redo
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CanUndo">
+      <summary>
+            Gets whether or not there is a command to undo
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.ClearAnnotations">
+      <summary>
+            Removes all of the annotations.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.ClearUndoRedoHistory">
+      <summary>
+            Clears the stored history for the Undo() and Redo() methods.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CopySelectedAnnotations">
+      <summary>
+            Copies the selected annotations to a temporary buffer. 
+            Use the <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.PasteCopiedAnnotations(System.Nullable{System.Int32})" /> method to create a duplicate of the copied annotations to the document
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CurrentAnnotationPage">
+      <summary>
+            The canvas that hosts annotations (displayed on top of the document) that last received and handled a MouseDown event.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CutSelectedAnnotations">
+      <summary>
+            Copies the selected annotations to a temporary buffer and then deletes them. 
+            Use the <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.PasteCopiedAnnotations(System.Nullable{System.Int32})" /> method to create a duplicate of the copied annotations to the document
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.DefaultAnnotation">
+      <summary>
+            The <c>DefaultAnnotation</c> is of the same type of annotation as that created by <see cref="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.AnnotationCreator" />, and can be used as a reference when setting the initial property values of the new annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.DeselectAllAnnotations">
+      <summary>
+            Deselects all currently selected annotations
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.Document">
+      <summary>
+            The document that this <c>AnnotationManager</c> is being used with. Needed for annotations that require information about text.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.GetAllChangedAnnotations">
+      <summary>
+            Gets a Dictionary of changed annotations and how they were changed
+            </summary>
+      <returns>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;returns&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.GetAllChangedAnnotations"]</p>
+      </returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.GetAnnotationByPoint(System.Windows.Point)">
+      <summary>
+            Gets the annotation at a specified point in the DocumentViewer
+            </summary>
+      <param name="point">A point relative to the overall Silverlight plug-in content area.</param>
+      <returns>The annotation at the specified point. If no annotation exists at the point or if the point is invalid, return value is <c>null</c>.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.GetNewAnnotationCanvases(System.Boolean)">
+      <summary>
+            Creates and returns a set of new annotation-containing canvases. Useful for printing.
+            </summary>
+      <param name="withVisiblePopups">True if open popups are to be included in the canvases.</param>
+      <returns>A list of annotation containing canvases.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})">
+      <summary>
+            Creates annotations that were previously serialized using <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SaveAnnotations" />.
+            </summary>
+      <param name="xmlAnnotations">The XML data produced by <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SaveAnnotations" />.</param>
+      <param name="filter">
+            A predicate specifying the conditions that need to be satisfied before a new deserialized annotation is added 
+            to the document. A return value of true means the annotation is added to the document. Null by default. 
+            </param>
+      <returns>A list of annotations that were deserialized and then added to the document</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.PasteCopiedAnnotations(System.Nullable{System.Int32})">
+      <summary>
+            Creates copies of the annotations copied using the <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CutSelectedAnnotations" /> or 
+            <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.CopySelectedAnnotations" /> methods onto the document
+            </summary>
+      <param name="newPageNumber">The new page number of the annotation; if this is <c>null</c>, the page number of the original annotation will be used. Default value is <c>null</c>.</param>
+      <returns>List of newly created annotations. Return value is <c>null</c> if no annotations has been copied</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.Redo">
+      <summary>
+            If the <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.Undo" /> method is called, Redo() reapplies its effects
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.RedrawAnnotation(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Causes the specified annotation to be redrawn. Typically called after the annotation's properties have been changed.
+            </summary>
+      <param name="annotation">The annotation to be redrawn.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.RemoveAnnotation(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Removes the specified annotation.
+            </summary>
+      <param name="annotation">The annotation to be removed.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.RemoveAnnotations(System.Collections.Generic.IEnumerable{PDFTron.SilverDox.Documents.Annotations.Annotation})">
+      <summary>
+            Removes the specified list of annotations.
+            </summary>
+      <param name="annotations">The list of annotations to be removed.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SaveAnnotations">
+      <summary>
+            Serializes the annotations into a byte array containing XML (UTF-8 encoded). This data can be saved and then loaded using <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" /> to re-create the annotations.
+            </summary>
+      <returns>The annotations serialized into XML.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SelectAnnotation(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Adds the specified annotation to the list of selected annotations.
+            If the annotation cannot be selected, this method returns false.
+            </summary>
+      <param name="annotation">The annotation to select</param>
+      <returns>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;returns&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SelectAnnotation(PDFTron.SilverDox.Documents.Annotations.Annotation)"]</p>
+      </returns>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.SelectedAnnotations">
+      <summary>
+            A list of the currently selected annotations.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.Undo">
+      <summary>
+            Reverts the effects of the previous action preformed by the DocumentViewer on the annotations
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.TypeOfChange">
+      <summary>
+            Defines how an annotation has been changed since the last load
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.TypeOfChange.Removed">
+      <summary>
+            The annotation has been removed
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.TypeOfChange.Created">
+      <summary>
+            The annotation is newly created
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.TypeOfChange.Modified">
+      <summary>
+            The annotation has been modified
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs">
+      <summary>
+            Provides data for the AnnotationPopupContentChanged event
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.String)">
+      <summary>
+            Constructs a new instance of <c>AnnotationsPopupContentChangedEventArgs"</c>.
+            </summary>
+      <param name="changedAnnotation">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="changedAnnotation"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.String)"]</p>
+      </param>
+      <param name="oldContent">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="oldContent"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.String)"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs.ChangedAnnotation">
+      <summary>
+            Gets the annotation that had its contents changed
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs.NewContent">
+      <summary>
+            Gets the new content of the popup box
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationPopupContentChangedEventArgs.OldContent">
+      <summary>
+            Gets the old content of the popup box
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs">
+      <summary>
+            Provides data for the AnnotationResized event
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Rect,System.Boolean,System.Boolean)">
+      <summary>
+            Constructs a new instance of <c>AnnotationResizedEventArgs</c>.
+            </summary>
+      <param name="resizedAnnotation">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="resizedAnnotation"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Rect,System.Boolean,System.Boolean)"]</p>
+      </param>
+      <param name="oldRect">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="oldRect"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Rect,System.Boolean,System.Boolean)"]</p>
+      </param>
+      <param name="oldMirroredHorizontally">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="oldMirroredHorizontally"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Rect,System.Boolean,System.Boolean)"]</p>
+      </param>
+      <param name="oldMirroredVertically">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="oldMirroredVertically"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.#ctor(PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Rect,System.Boolean,System.Boolean)"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.NewMirroredHorizontally">
+      <summary>
+            Gets whether or not the resized annotation is mirrored horizontally after the resize
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.NewMirroredVertically">
+      <summary>
+            Gets whether or not the resized annotation is mirrored vertically after the resize
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.NewRect">
+      <summary>
+            Gets the new coordinates, height and width <see cref="T:System.Windows.Rect" /> of the resized annotation
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.OldMirroredHorizontally">
+      <summary>
+            Gets whether or not the resized annotation was mirrored horizontally before the resize
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.OldMirroredVertically">
+      <summary>
+            Gets whether or not the resized annotation was mirrored vertically before the resize
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.OldRect">
+      <summary>
+            The old coordinates, height and width <see cref="T:System.Windows.Rect" /> of the resized annotation
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs.ResizedAnnotation">
+      <summary>
+            Gets the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" /> object that was moved
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.AnnotationsEventArgs">
+      <summary>
+            Provides data for Annotation related events.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationsEventArgs.#ctor(System.Collections.Generic.List{PDFTron.SilverDox.Documents.Annotations.Annotation})">
+      <summary>
+            Constructs a new instance of <c>AnnotationsEventArgs</c>.
+            </summary>
+      <param name="annotations">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="annotations"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationsEventArgs.#ctor(System.Collections.Generic.List{PDFTron.SilverDox.Documents.Annotations.Annotation})"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationsEventArgs.Annotations">
+      <summary>
+            Gets the collection of <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" /> objects that are relevant to the event.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs">
+      <summary>
+            Provides data for the AnnotationsMoveCompleted event
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs.#ctor(System.Collections.Generic.Dictionary{PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Point},System.Collections.Generic.Dictionary{PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Point})">
+      <summary>
+            Constructs a new instance of <c>AnnotationsMoveCompletedEventArgs"</c>.
+            </summary>
+      <param name="oldLocations">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="oldLocations"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs.#ctor(System.Collections.Generic.Dictionary{PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Point},System.Collections.Generic.Dictionary{PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Point})"]</p>
+      </param>
+      <param name="newLocations">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="newLocations"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs.#ctor(System.Collections.Generic.Dictionary{PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Point},System.Collections.Generic.Dictionary{PDFTron.SilverDox.Documents.Annotations.Annotation,System.Windows.Point})"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs.MovedAnnotations">
+      <summary>
+            Gets a list of the moved annotations
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs.NewLocations">
+      <summary>
+            Gets a dictionary of <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" /> objects and their new location coordinates
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.AnnotationsMoveCompletedEventArgs.OldLocations">
+      <summary>
+            Gets a dictionary of <see cref="T:PDFTron.SilverDox.Documents.Annotations.Annotation" /> objects and their old location coordinates
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.Ellipse">
+      <summary>
+            Represents an ellipse annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Ellipse.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Ellipse" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Ellipse.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Ellipse" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Ellipse.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Ellipse" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+      <returns>A new Ellipse annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Ellipse.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.FreeHand">
+      <summary>
+            Represents a line annotation. (This annotation type is typically drawn by a user using the mouse and is not usually straight.)
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.FreeHand" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.FreeHand" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.FreeHand.BottomMost">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "F:PDFTron.SilverDox.Documents.Annotations.FreeHand.BottomMost"]</p>
+      </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.FreeHand" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+      <returns>A new FreeHand annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Height">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Height"]</p>
+      </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.FreeHand.LeftMost">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "F:PDFTron.SilverDox.Documents.Annotations.FreeHand.LeftMost"]</p>
+      </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnAnnotationResizeEnded(PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs)">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnAnnotationResizeEnded(PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs)"]</p>
+      </summary>
+      <param name="e">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="e"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnAnnotationResizeEnded(PDFTron.SilverDox.Documents.Annotations.AnnotationResizedEventArgs)"]</p>
+      </param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnAnnotationResizeStarted">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnAnnotationResizeStarted"]</p>
+      </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnCreateMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called by the annotation's <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> when a MouseMove event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="mouseMoveEventArgs">The event data.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnCreateMouseUp(System.Windows.Input.MouseButtonEventArgs,System.Boolean)">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnCreateMouseUp(System.Windows.Input.MouseButtonEventArgs,System.Boolean)"]</p>
+      </summary>
+      <param name="e">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="e"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnCreateMouseUp(System.Windows.Input.MouseButtonEventArgs,System.Boolean)"]</p>
+      </param>
+      <param name="wasDoubleClick">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="wasDoubleClick"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.FreeHand.OnCreateMouseUp(System.Windows.Input.MouseButtonEventArgs,System.Boolean)"]</p>
+      </param>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.FreeHand.RightMost">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "F:PDFTron.SilverDox.Documents.Annotations.FreeHand.RightMost"]</p>
+      </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Stroke">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Stroke"]</p>
+      </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.FreeHand.TopMost">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "F:PDFTron.SilverDox.Documents.Annotations.FreeHand.TopMost"]</p>
+      </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Width">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Width"]</p>
+      </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.FreeHand.X">
+      <summary>
+            Gets or sets the annotation's x-axis position.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.FreeHand.Y">
+      <summary>
+            Gets or sets the annotation's y-axis position.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.Line">
+      <summary>
+            Represents a straight line annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Line.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Line" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Line.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Line" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Line.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Line" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+      <returns>A new Line annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Line.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Line.OnCreateMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called by the annotation's <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> when a MouseMove event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="mouseMoveEventArgs">The event data.</param>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.Markup">
+      <summary>
+            A base class for annotation types that are used to mark up documents.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Markup.#ctor">
+      <summary>
+            Called by subclasses during construction to set properties common to Markup annotations.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Markup.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Called by subclasses during construction to set properties common to Markup annotations.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.FillColor">
+      <summary>
+            Gets or sets the color of the annotation's interior.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.Height">
+      <summary>
+            Gets or sets the annotation's height.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.StrokeColor">
+      <summary>
+            Gets or sets the color of the annotation's stroke.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.StrokeDashArray">
+      <summary>
+            Gets or sets a collection of Double values that indicate the pattern of dashes and gaps that is used to outline the annotation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.StrokeThickness">
+      <summary>
+            Gets or sets the width of the annotation's stroke outline. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.Width">
+      <summary>
+            Gets or sets the annotation's width.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.X">
+      <summary>
+            Gets or sets the annotation's x-axis position.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Markup.Y">
+      <summary>
+            Gets or sets the annotation's y-axis position.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.PopupBody">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "T:PDFTron.SilverDox.Documents.Annotations.PopupBody"]</p>
+      </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.PopupBody.#ctor">
+      <summary>
+            The popup that is displayed when an annotation is double-clicked.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.PopupBody.Annotation">
+      <summary>
+            The Annotation for this popup body
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.PopupBody.AnnotationProperty">
+      <summary>
+            Dependency Property for Annotation
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.PopupBody.BackgroundColor">
+      <summary>
+            The background color of this popup body.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Documents.Annotations.PopupBody.CloseBoxClicked">
+      <summary>
+            Occurs when the close (minimize) box is clicked.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Documents.Annotations.PopupBody.CommentTextBoxLostFocus">
+      <summary>
+            Occurs when the comment text box looses focus.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Documents.Annotations.PopupBody.CommentTextBoxMouseEnter">
+      <summary>
+            Occurs when the mouse enters the comment text box.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Documents.Annotations.PopupBody.CommentTextBoxMouseLeave">
+      <summary>
+            Occures when the mouse leaves the comment text box.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.PopupBody.ForegroundColor">
+      <summary>
+            The foreground (text) color of this popup body.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.PopupBody.GetPopupBodyBackgroundColor(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Gets the annotation's <see cref="T:PDFTron.SilverDox.Documents.Annotations.PopupBody" />'s background color.
+            </summary>
+      <param name="annot">An annotation.</param>
+      <returns>The annotation's <see cref="T:PDFTron.SilverDox.Documents.Annotations.PopupBody" />'s background color.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.PopupBody.GetPopupBodyForegroundColor(PDFTron.SilverDox.Documents.Annotations.Annotation)">
+      <summary>
+            Returns the color that will be used by the text on the <see cref="T:PDFTron.SilverDox.Documents.Annotations.PopupBody" />.
+            </summary>
+      <param name="annot">An annotation.</param>
+      <returns>The color of the text on the <see cref="T:PDFTron.SilverDox.Documents.Annotations.PopupBody" />.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.PopupBody.InitializeComponent">
+      <summary>
+            InitializeComponent
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.Documents.Annotations.PopupBody.PropertyChanged">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "E:PDFTron.SilverDox.Documents.Annotations.PopupBody.PropertyChanged"]</p>
+      </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.Rectangle">
+      <summary>
+            Represents a rectagle annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Rectangle.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Rectangle" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Rectangle.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Rectangle" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Rectangle.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Rectangle" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+      <returns>A new Rectangle annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Rectangle.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.Sticky">
+      <summary>
+            Represents a sticky note annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Sticky.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Sticky" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Sticky.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Sticky" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Sticky.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.Sticky" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> that is associated with the annotation.</param>
+      <returns>A new Sticky annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Sticky.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Sticky.Height">
+      <summary>
+            Gets the height of the annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.Sticky.OnCreateMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called by the annotation's <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> when a MouseMove event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="mouseMoveEventArgs">The event data.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.Sticky.Width">
+      <summary>
+            Gets the width of the annotation.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.TextHighlight">
+      <summary>
+            Represents a text highlight annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextHighlight.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextHighlight" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextHighlight.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextHighlight" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> to associate with this annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextHighlight.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextHighlight" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> to associate with this annotation.</param>
+      <returns>A new TextHighlight annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextHighlight.DrawTextAnnotation">
+      <summary>
+            Alters <see cref="F:PDFTron.SilverDox.Documents.Annotations.TextMarkup.Appearance" /> using the <see cref="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.TextQuads" /> so that the text is highlighted.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.TextMarkup">
+      <summary>
+            A base class for annotation types that are used to mark up text in a document.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.#ctor">
+      <summary>
+            Called by subclasses during construction to set properties common to TextMarkup annotations.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Called by subclasses during construction to set properties common to TextMarkup annotations.
+            </summary>
+      <param name="annotationManager">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="annotationManager"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)"]</p>
+      </param>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Annotations.TextMarkup.Appearance">
+      <summary>
+            The canvas that was last returned by the method <see cref="M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.CreateAppearanceCanvas" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.CreateAppearanceCanvas">
+      <summary>
+            Creates and returns the annotation's appearance canvas that will be displayed on screen.
+            </summary>
+      <returns>The annotation's appearance canvas.</returns>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.Document">
+      <summary>
+            The document that is used to determine the location of the text on a page.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.DrawTextAnnotation">
+      <summary>
+            Alters <see cref="F:PDFTron.SilverDox.Documents.Annotations.TextMarkup.Appearance" /> using the <see cref="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.TextQuads" /> so that the text is marked up as desired.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.IsCopyable">
+      <summary>
+            Indicates whether or not the user should be able to copy this annotation
+            Returns false by default for <c>TextMarkup</c> annotations
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextMarkup.OnCreateMouseMove(System.Windows.Input.MouseEventArgs)">
+      <summary>
+            Called by the annotation's <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> when a MouseMove event is received and the <c>AnnotationManager</c>
+            is set to create this type of annotation.
+            </summary>
+      <param name="mouseMoveEventArgs">The event data.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.SelectEnd">
+      <summary>
+            The point at which text selection ends.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.SelectStart">
+      <summary>
+            The point at which text selection starts.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.TextQuads">
+      <summary>
+            Represents the boundaries of the text selected between the corner points defined by <see cref="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.SelectStart" /> and <see cref="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.SelectEnd" />.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.TextStrikeout">
+      <summary>
+            Represents a text strikeout annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextStrikeout.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextStrikeout" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextStrikeout.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextStrikeout" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> to associate with this annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextStrikeout.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextStrikeout" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> to associate with this annotation.</param>
+      <returns>A new TextStrikeout annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextStrikeout.DrawTextAnnotation">
+      <summary>
+            Alters <see cref="F:PDFTron.SilverDox.Documents.Annotations.TextMarkup.Appearance" /> using the <see cref="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.TextQuads" /> so that the text is highlighted.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.TextUnderline">
+      <summary>
+            Represents a text underline annotation.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextUnderline.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextUnderline" /> class. This constructor is used when loading annotations with <see cref="M:PDFTron.SilverDox.Documents.Annotations.AnnotationManager.LoadAnnotations(System.IO.Stream,System.Predicate{PDFTron.SilverDox.Documents.Annotations.Annotation})" />.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextUnderline.#ctor(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextUnderline" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> to associate with this annotation.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextUnderline.Create(PDFTron.SilverDox.Documents.Annotations.AnnotationManager)">
+      <summary>
+            Creates a new instance of the <see cref="T:PDFTron.SilverDox.Documents.Annotations.TextUnderline" /> class.
+            </summary>
+      <param name="annotationManager">The <see cref="T:PDFTron.SilverDox.Documents.Annotations.AnnotationManager" /> to associate with this annotation.</param>
+      <returns>A new TextStrikeout annotation.</returns>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.TextUnderline.DrawTextAnnotation">
+      <summary>
+            Alters <see cref="F:PDFTron.SilverDox.Documents.Annotations.TextMarkup.Appearance" /> using the <see cref="P:PDFTron.SilverDox.Documents.Annotations.TextMarkup.TextQuads" /> so that the text is highlighted.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Annotations.ToolModeChangedEventArgs">
+      <summary>
+            Provides data for the ToolModeChanged event
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Annotations.ToolModeChangedEventArgs.#ctor(PDFTron.SilverDox.Controls.DocumentViewer.ToolModes,PDFTron.SilverDox.Controls.DocumentViewer.ToolModes)">
+      <summary>
+            Constructs a new instance of <c>ToolModeChangedEventArgs"</c>.
+            </summary>
+      <param name="oldToolMode">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="oldToolMode"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.ToolModeChangedEventArgs.#ctor(PDFTron.SilverDox.Controls.DocumentViewer.ToolModes,PDFTron.SilverDox.Controls.DocumentViewer.ToolModes)"]</p>
+      </param>
+      <param name="newToolMode">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="newToolMode"/&gt; documentation for "M:PDFTron.SilverDox.Documents.Annotations.ToolModeChangedEventArgs.#ctor(PDFTron.SilverDox.Controls.DocumentViewer.ToolModes,PDFTron.SilverDox.Controls.DocumentViewer.ToolModes)"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.ToolModeChangedEventArgs.NewToolMode">
+      <summary>
+            Gets the new ToolMode of the <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" /></summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Annotations.ToolModeChangedEventArgs.OldToolMode">
+      <summary>
+            Gets the old ToolMode of the <see cref="T:PDFTron.SilverDox.Controls.DocumentViewer" /></summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.Quad">
+      <summary>
+            Represents a bounding box quadrangle around text. The points are ordered counter-clockwise, starting at the glyph's lower-left corner.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.x1">
+      <summary>
+            The x coordinate of the first point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.x2">
+      <summary>
+            The x coordinate of the second point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.x3">
+      <summary>
+            The x coordinate of the third point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.x4">
+      <summary>
+            The x coordinate of the fourth point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.y1">
+      <summary>
+            The y coordinate of the first point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.y2">
+      <summary>
+            The y coordinate of the second point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.y3">
+      <summary>
+            The y coordinate of the third point.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.Quad.y4">
+      <summary>
+            The y coordinate of the fourth point.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.TextSearch">
+      <summary>
+            TextSearch searches through a <see cref="T:PDFTron.SilverDox.Documents.Document" /> for a user-given search pattern. TextSearch provides users with several useful search modes and extra information besides the found string that matches the pattern. TextSearch can either keep running until a matched string is found or be set to return periodically in order for the caller to perform any necessary updates (e.g., UI updates).
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Text.TextSearch.#ctor(PDFTron.SilverDox.Documents.Document)">
+      <summary>
+            Constructs a new TextSearch object.
+            </summary>
+      <param name="document">The <see cref="T:PDFTron.SilverDox.Documents.Document" /> that will be searched.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Text.TextSearch.SearchBegin(System.String,PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes,System.Int32)">
+      <summary>
+            Initilizes a new search. To perform a search, it must be followed by at least one call to <see cref="M:PDFTron.SilverDox.Documents.Text.TextSearch.SearchNextAsync(System.Action{PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs},System.Object)" />.
+            </summary>
+      <param name="pattern">The search string.</param>
+      <param name="mode">The options for the search, such as search direction and case sensitvity.</param>
+      <param name="startOnPageNumber">The page number of the <see cref="T:PDFTron.SilverDox.Documents.Document" /> on which to start the search.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Text.TextSearch.SearchNextAsync(System.Action{PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs},System.Object)">
+      <summary>
+            Attempts to find the next instance of the search string specified in <see cref="M:PDFTron.SilverDox.Documents.Text.TextSearch.SearchBegin(System.String,PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes,System.Int32)" />.
+            </summary>
+      <param name="onTextSearchAsyncCallback">The callback function to call when the search completes.
+            The search may complete when the search term is found, when the entire document has been searched, and, depending on the search options, at the end of every page.</param>
+      <param name="userData">
+            Custom data that will be included in the callback function's arguments.
+            </param>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs">
+      <summary>
+            Arguments used as a parameter in the user defined callback function provided to <see cref="M:PDFTron.SilverDox.Documents.Text.TextSearch.SearchNextAsync(System.Action{PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs},System.Object)" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.AmbientString">
+      <summary>
+            The text surrounding the <c>ResultString</c>.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.AsyncState">
+      <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.AsyncWaitHandle">
+      <summary>
+            Gets a <c>WaitHandle</c> that is used to wait for an asynchronous operation to complete.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.CompletedSynchronously">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.Error">
+      <summary>
+            If an error has occured, <c>Error</c> contains information about the error; otherwise, <c>Error</c> is null. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.IsCompleted">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.PageNumber">
+      <summary>
+            The page number which the search was conducted on.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.Quads">
+      <summary>
+            A list of <see cref="T:PDFTron.SilverDox.Documents.Text.Quad" />s, representing the bounding box(es) of the found text. Useful for highlighting the text.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.ResultCode">
+      <summary>
+            The reason the search completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSearch.OnTextSearchAsyncCallbackArgs.ResultString">
+      <summary>
+            The found text.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes">
+      <summary>
+            Search modes that control how searching is conducted. 
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.None">
+      <summary>
+            Default flag, does not alter search mode.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.CaseSensitive">
+      <summary>
+            If set, the found text must match the case of the search term.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.WholeWord">
+      <summary>
+            If set, the found text must be a whole word (preceeded and followed by a non-alphabetical character, or in the case of a number, a non-numerical character.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.SearchUp">
+      <summary>
+            If set, the document pages will be searched in descending order, from bottom to top.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.PageStop">
+      <summary>
+            If set, the search will return with a result code of <c>Page</c> at the end of every page. Useful for updating the UI.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.ProvideQuads">
+      <summary>
+            If set, the bounding box the found term will be included. Useful for highlighting text and positioning the page.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchModes.AmbientString">
+      <summary>
+            If set, the characters surrounding the found term will be included. This gives context to the search result may be useful when providing a list of search results.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.TextSearch.SearchResultCode">
+      <summary>
+            The code indicating the reason that the search process concluded.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchResultCode.Done">
+      <summary>
+            Entire document searched.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchResultCode.Page">
+      <summary>
+            Search reached end of page with no (more) found terms.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchResultCode.Found">
+      <summary>
+            The search found a match.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchResultCode.NotFound">
+      <summary>
+            The search did not find a match.
+            </summary>
+    </member>
+    <member name="F:PDFTron.SilverDox.Documents.Text.TextSearch.SearchResultCode.Error">
+      <summary>
+            An exception was found, see the associated exception for more information
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.TextSelector">
+      <summary>
+            Used to identify the location of text on a page. Useful for implementing text highlighting and copying.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Text.TextSelector.#ctor(PDFTron.SilverDox.Documents.Document)">
+      <summary>
+            Constructs a new TextSelector.
+            </summary>
+      <param name="document">The <see cref="T:PDFTron.SilverDox.Documents.Document" /> that will be used for text selection.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Text.TextSelector.SelectByRectAsync(System.Int32,System.Windows.Point,System.Windows.Point,System.Action{PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs})">
+      <summary>
+            Performs rectangular text selection. The selected text is what is found within the input selection points (specified by the two <see cref="T:System.Windows.Point" /> arguments), with whole words always selected.
+            </summary>
+      <param name="pageNumber">The page number of the <see cref="T:PDFTron.SilverDox.Documents.Document" /> on which to select text.</param>
+      <param name="startPoint">The first point of the selection rectangle.</param>
+      <param name="endPoint">The second point of the selection rectangle.</param>
+      <param name="onTextSelectionAsyncCallback">The callback function that is called when the method returns.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.Documents.Text.TextSelector.SelectByStructAsync(System.Int32,System.Windows.Point,System.Windows.Point,System.Action{PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs})">
+      <summary>
+            Performs structural text selection. Which text is selected is determined using both the input selection points (specified by the two <see cref="T:System.Windows.Point" /> arguments) and the layout of the text.
+            </summary>
+      <param name="pageNumber">The page number of the <see cref="P:PDFTron.SilverDox.Documents.Text.TextSelector.Document" /> on which to select text.</param>
+      <param name="startPoint">The first point of the selection rectangle.</param>
+      <param name="endPoint">The second point of the selection rectangle.</param>
+      <param name="onTextSelectionAsyncCallback">The callback function that is called when the method returns.</param>
+    </member>
+    <member name="T:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs">
+      <summary>
+            Arguments used as a parameter in the user defined callback function provided to <see cref="M:PDFTron.SilverDox.Documents.Text.TextSelector.SelectByRectAsync(System.Int32,System.Windows.Point,System.Windows.Point,System.Action{PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs})" /> and <see cref="M:PDFTron.SilverDox.Documents.Text.TextSelector.SelectByStructAsync(System.Int32,System.Windows.Point,System.Windows.Point,System.Action{PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs})" />. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.AsyncState">
+      <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.AsyncWaitHandle">
+      <summary>
+            Gets a <c>WaitHandle</c> that is used to wait for an asynchronous operation to complete.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.CompletedSynchronously">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.Error">
+      <summary>
+            If an error has occured, <c>Error</c> contains information about the error; otherwise, <c>Error</c> is null. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.IsCompleted">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.Quads">
+      <summary>
+            A list of <see cref="T:PDFTron.SilverDox.Documents.Text.Quad" />s, representing the bounding box(es) of selected text. Useful for highlighting the text.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.Documents.Text.TextSelector.OnTextSelectionAsyncCallbackArgs.Text">
+      <summary>
+            The string representing the selected text.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.IO.HttpPartRetriever">
+      <summary>
+            Retrieves <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts asynchronously from a .xod file hosted on a web server. The server is required to support the HTTP/1.1 protocol.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpPartRetriever.#ctor(System.Uri,System.Boolean,System.String)">
+      <summary>
+            Constructs a new <c>HttpPartRetriever</c>.
+            </summary>
+      <param name="uri">The URI of the HTTP server-hosted .xod file.</param>
+      <param name="backgroundLoadDocument">If background loading should be initially set to true or false. Default is true.</param>
+      <param name="cookies">HTTP cookies that will be sent with every request. Individual cookies are delimited with semi-colons. Useful if an autentication cookies needs to be included for document access.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpPartRetriever.BackgroundLoadDocument">
+      <summary>
+            If true, the part retriever will continued to download content for pages that are not currently being displayed.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpPartRetriever.CancelAllRequests">
+      <summary>
+            Cancels all outstanding requests.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpPartRetriever.CancelRequests(System.Collections.Generic.List{System.String})">
+      <summary>
+            Cancels requests for specific <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts.
+            </summary>
+      <param name="parts">The names of the parts which are no longer to be requested. Part names are typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpPartRetriever.Cookies">
+      <summary>
+            HTTP cookies that will be sent with every request. Individual cookies are delimited with semi-colons (e.g. "Name1=value1;Name2=value2"). Useful if an autentication cookies needs to be included for document access. This property is accessible via JavaScript.
+            </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.IO.HttpPartRetriever.OnPartReady">
+      <summary>
+            Raised when a part has been acquired. It is necessary to subscribe to this event to receive the parts returned by a call to the <see cref="M:PDFTron.SilverDox.IO.HttpPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)" /> or <see cref="M:PDFTron.SilverDox.IO.HttpPartRetriever.RequestDocument" /> methods.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)">
+      <summary>
+            Requests specfic <see cref="T:PDFTron.SilverDox.Documents.Document" /> document parts.
+            </summary>
+      <param name="parts">The names of the requested parts, typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+      <param name="customData">An object that will be included as part of the OnPartReadyEventArgs.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpPartRetriever.RequestDocument">
+      <summary>
+            Requests the information necessary to initilize the <see cref="T:PDFTron.SilverDox.Documents.Document" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpPartRetriever.ShowThumbnailBeforePageContent">
+      <summary>
+            If true, shows an upscaled thumbnail on a page while the page's content is downloadd.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpPartRetriever.Uri">
+      <summary>
+            The URI of the HTTP server-hosted .xod file.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpPartRetriever.UseDocumentThumbnailIfAvailable">
+      <summary>
+            If true, uses a document's pre-rendered thumbnail rather than rendering one on the fly from the page's content. 
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.IO.HttpStreamingPartRetriever">
+      <summary>
+            Streams a .xod file hosted on a web server and display pages as they are available.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.#ctor(System.Uri,System.Boolean)">
+      <summary>
+            Constructs a new <c>HttpStreamingPartRetriever</c>.
+            </summary>
+      <param name="uri">The URI of the HTTP server-hosted .xod file.</param>
+      <param name="backgroundLoadDocument">This parameter is included for consistency between part retrievers; however, as the streaming part retriever loads the entire
+            document from beginning to end, this parameter has no effect.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.AddBytes(System.Byte[],System.Int32)">
+      <summary>
+            If the .xod if not accessed via a URI but via some other mechanism that can provide a stream of bytes (e.g. directly from a WCF service),
+            then this method may be used to provide the retriever with bytes as they become available.
+            Do not provide the constructor with a URI if you intend to use this method.
+            </summary>
+      <param name="newBytes">A byte array containing the new bytes.</param>
+      <param name="numNewBytes">The number of valid bytes in the array.</param>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.BackgroundLoadDocument">
+      <summary>
+            If true, the part retriever will continued to download content for pages that are not currently being displayed.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.CancelAllRequests">
+      <summary>
+            Cancels all outstanding requests.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.CancelRequests(System.Collections.Generic.List{System.String})">
+      <summary>
+            Cancels requests for specific <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts.
+            </summary>
+      <param name="parts">The names of the parts which are no longer to be requested. Part names are typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+    </member>
+    <member name="E:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.OnPartReady">
+      <summary>
+            Raised when a part has been acquired. It is necessary to subscribe to this event to receive the parts returned by a call to the <see cref="M:PDFTron.SilverDox.IO.HttpPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)" /> or <see cref="M:PDFTron.SilverDox.IO.HttpPartRetriever.RequestDocument" /> methods.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)">
+      <summary>
+            Requests specfic <see cref="T:PDFTron.SilverDox.Documents.Document" /> document parts.
+            </summary>
+      <param name="parts">The names of the requested parts, typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+      <param name="customData">An object that will be included as part of the OnPartReadyEventArgs.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.RequestDocument">
+      <summary>
+            Requests the information necessary to initilize the <see cref="T:PDFTron.SilverDox.Documents.Document" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.ShowThumbnailBeforePageContent">
+      <summary>
+            If true, shows an upscaled thumbnail on a page while the page's content is downloadd.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.Uri">
+      <summary>
+            The URI of the HTTP server-hosted .xod file.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.HttpStreamingPartRetriever.UseDocumentThumbnailIfAvailable">
+      <summary>
+            If true, uses a document's pre-rendered thumbnail rather than rendering one on the fly from the page's content. 
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.IO.IPartRetriever">
+      <summary>
+            The interface which is implemented by a part retriever. A part retriever is an object that is responsible for accessing a .xod document, and returning the requested document parts.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.IPartRetriever.BackgroundLoadDocument">
+      <summary>
+            Gets or sets whether the Document will continue to load in the background during idle periods.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.IPartRetriever.CancelAllRequests">
+      <summary>
+            Cancels all outstanding requests.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.IPartRetriever.CancelRequests(System.Collections.Generic.List{System.String})">
+      <summary>
+            Cancels requests for specific <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts.
+            </summary>
+      <param name="parts">The names of the parts which are no longer to be requested. Part names are typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+    </member>
+    <member name="E:PDFTron.SilverDox.IO.IPartRetriever.OnPartReady">
+      <summary>
+            Raised when a part has been acquired.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.IPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)">
+      <summary>
+            Request specfic <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts.
+            </summary>
+      <param name="parts">The names of the requested parts, typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+      <param name="customData">An object that will be included as part of the OnPartReadyEventArgs.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.IPartRetriever.RequestDocument">
+      <summary>
+            Requests the information necessary to initilize the <see cref="T:PDFTron.SilverDox.Documents.Document" />.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.IPartRetriever.ShowThumbnailBeforePageContent">
+      <summary>
+            Gets or sets whether the viewer will display an enlarged thumbnail of a document's page when the page is scrolled to but has not yet been loaded. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.IPartRetriever.Uri">
+      <summary>
+            The URI of the .xod document.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.IPartRetriever.UseDocumentThumbnailIfAvailable">
+      <summary>
+            Gets or sets whether the method Document.LoadThumbnailAsync() will return pre-generated page thumbnails (if they are available in the document),
+            or will create thumbnail created from the page contents.
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.IO.LocalPartRetriever">
+      <summary>
+            Retrieves <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts asynchronously from locally hosted .xod file.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.#ctor(System.IO.Stream,System.Boolean)">
+      <summary>
+             Constructs a new <c>LocalPartRetriever</c>.
+             </summary>
+      <param name="stream">
+             A stream to a .xod file, typically acquired from a local file using an open file dialog.
+             </param>
+      <param name="backgroundLoadDocument">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="backgroundLoadDocument"/&gt; documentation for "M:PDFTron.SilverDox.IO.LocalPartRetriever.#ctor(System.IO.Stream,System.Boolean)"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.LocalPartRetriever.BackgroundLoadDocument">
+      <summary>
+            If true, the part retriever will continued to download content for pages that are not currently being displayed.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.CancelAllRequests">
+      <summary>
+            Cancels all outstanding requests.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.CancelRequests(System.Collections.Generic.List{System.String})">
+      <summary>
+            Cancels requests for specific <see cref="T:PDFTron.SilverDox.Documents.Document" /> parts.
+            </summary>
+      <param name="parts">The names of the parts which are no longer to be requested. Part names are typically retrieved from a <see cref="T:PDFTron.SilverDox.Documents.Document" />'s <see cref="P:PDFTron.SilverDox.Documents.Document.Pages" />'s <c>ResourceNames</c> property.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.Dispose">
+      <summary>
+            Closes the file stream created when opening the .xod file using the <c>RequestDocument()</c> method.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.Finalize">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "M:PDFTron.SilverDox.IO.LocalPartRetriever.Finalize"]</p>
+      </summary>
+    </member>
+    <member name="E:PDFTron.SilverDox.IO.LocalPartRetriever.OnPartReady">
+      <summary>
+            Raised when a part has been acquired. It is necessary to subscribe to this event to receive the parts returned by a call to the <see cref="M:PDFTron.SilverDox.IO.LocalPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)" /> or <see cref="M:PDFTron.SilverDox.IO.LocalPartRetriever.RequestDocument" /> methods.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.Request(System.Collections.Generic.List{System.String},System.Object)">
+      <summary>
+            Request specfic document resources.
+            </summary>
+      <param name="parts">The names of the requested resources.</param>
+      <param name="CustomData">An object that will be included as part of the OnPartReadyEventArgs.</param>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.LocalPartRetriever.RequestDocument">
+      <summary>
+            Creates an open file dialog box in order to acquire a stream from the locally hosted .xod file, then requests the information necessary to initilize the <see cref="T:PDFTron.SilverDox.Documents.Document" />. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.LocalPartRetriever.ShowThumbnailBeforePageContent">
+      <summary>
+            If true, shows an upscaled thumbnail on a page while the page's content is downloadd.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.LocalPartRetriever.Uri">
+      <summary>
+            Unused in this part retriever because of the local file system security restrictions imposed by Silverlight. This part retriever is constructed using a stream to a .xod document.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.LocalPartRetriever.UseDocumentThumbnailIfAvailable">
+      <summary>
+            If true, uses a document's pre-rendered thumbnail rather than rendering one on the fly from the page's content. 
+            </summary>
+    </member>
+    <member name="T:PDFTron.SilverDox.IO.OnPartReadyEventArgs">
+      <summary>
+            Arguments that are a parameter to the <see cref="E:PDFTron.SilverDox.IO.IPartRetriever.OnPartReady" /> event handler.
+            </summary>
+    </member>
+    <member name="M:PDFTron.SilverDox.IO.OnPartReadyEventArgs.#ctor(System.String,System.Byte[],System.Object,System.Boolean,System.Boolean,System.Boolean,System.Exception)">
+      <summary>
+            Constructor.
+            </summary>
+      <param name="fileName">The file name of the part being returend.</param>
+      <param name="data">The data of the part being returned.</param>
+      <param name="customData">An object that may be used to pass through custom data.</param>
+      <param name="completedSynchronously">Indicates if the callback was called synchronously.</param>
+      <param name="cancelled">Indicates if the request has been cancelled.</param>
+      <param name="error">If an error has occured, <c>Error</c> contains information about the error; otherwise, <c>Error</c> is null. </param>
+      <param name="compressedData">
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;param name="compressedData"/&gt; documentation for "M:PDFTron.SilverDox.IO.OnPartReadyEventArgs.#ctor(System.String,System.Byte[],System.Object,System.Boolean,System.Boolean,System.Boolean,System.Exception)"]</p>
+      </param>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.AsyncState">
+      <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.AsyncWaitHandle">
+      <summary>
+            Gets a <c>WaitHandle</c> that is used to wait for an asynchronous operation to complete.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.Cancelled">
+      <summary>
+            Indicates if the request was cancelled.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.CompletedSynchronously">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.Data">
+      <summary>
+            The data of the part being returned.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.Error">
+      <summary>
+            If an error has occured, <c>Error</c> contains information about the error; otherwise, <c>Error</c> is null. 
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.IsCompleted">
+      <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.IsCompressed">
+      <summary>
+            Indicates if the bytes in <see cref="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.Data" /> are compressed flate compressed.
+            </summary>
+    </member>
+    <member name="P:PDFTron.SilverDox.IO.OnPartReadyEventArgs.PartName">
+      <summary>
+            The name of the part being returend.
+            </summary>
+    </member>
+  </members>
+</doc>
